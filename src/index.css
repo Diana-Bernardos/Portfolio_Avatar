@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Using the dark purple theme as default for both */
+  --color-bg: 18 18 18; /* #121212 */
+  --color-surface: 30 30 30; /* #181818 */
+  --color-primary: 255 255 255;
+  --color-secondary: 179 168 200; /* #B3A8C8 */
+  --color-accent: 255 206 50; /* #FFCE32 (Yellow) */
+  --color-accent2: 255 206 50; /* #FFCE32 (Yellow) */
+  --color-border: 51 51 51; /* #333333 */
+}
+
+.dark {
+  --color-bg: 18 18 18;
+  --color-surface: 30 30 30;
+  --color-primary: 255 255 255;
+  --color-secondary: 179 168 200;
+  --color-accent: 255 206 50;
+  --color-accent2: 255 206 50;
+  --color-border: 51 51 51;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-primary selection:bg-accent/20 bg-background font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .surface {
+    @apply bg-[rgb(var(--color-surface))] border border-borderC;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-[rgb(var(--color-surface))]/70 border border-white/10;
+  }
+
+  .mesh-gradient {
+    /* Removed for solid background */
+  }
+
+  .sunset-border {
+    @apply border border-transparent relative;
+    background-image: linear-gradient(to right, rgb(var(--color-surface)), rgb(var(--color-surface))),
+      linear-gradient(to right, rgb(var(--color-accent)), rgb(var(--color-accent2)));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .premium-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .premium-shadow-hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+.dynamic-page-bg {
+  /* Removed dynamic background for cleaner dark background as in references */
+  background-color: rgb(var(--color-bg));
+}
+
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--color-accent), 0.1), transparent 60%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.glow-card:hover::after {
+  opacity: 1;
+}
+
+.parallax-img {
+  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1);
+  transition: transform 300ms ease;
+  will-change: transform;
+}
+
+.glow-card:hover .parallax-img {
+  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1.03);
+}
+
+/* Hide scrollbar for clean look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[rgb(var(--color-border))] rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary/50;
+}
+
