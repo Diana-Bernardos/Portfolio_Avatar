@@ -66,7 +66,7 @@ export function Experience() {
             Trayectoria
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Mi recorrido profesional y académico que me ha llevado hasta el desarrollo web y el diseño UX/UI.
+            Mi recorrido profesional y académico que me ha llevado hasta el desarrollo web y el diseño UX/UI integrando IA en mis proyectos.
           </p>
         </motion.div>
 

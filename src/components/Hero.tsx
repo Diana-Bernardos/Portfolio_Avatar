@@ -1,4 +1,4 @@
-import { FileDown, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { FileDown, Github, Linkedin } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 
 import avatar from '../assets/images/avatar-hero.png';
@@ -68,7 +68,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div variants={item} className="flex gap-4">
-            {[Github, Linkedin, Twitter, Instagram].map((Icon, i) => (
+            {[Github, Linkedin].map((Icon, i) => (
               <a 
                 key={i} 
                 href={Icon === Github ? 'https://github.com/Diana-Bernardos' : Icon === Linkedin ? 'https://www.linkedin.com/in/diana-bernardos-moraleda-536378223' : '#'}

@@ -5,7 +5,8 @@ export function Certifications() {
   const certs = [
     'Técnico Superior en Desarrollo de Aplicaciones Web (DAW)',
     'Bootcamp Desarrollo de Páginas Web',
-    'Formación continua en IA (Ollama, HuggingFace)'
+    'Formación continua en IA (Ollama, HuggingFace)',
+    'Certificación de Google en UX/UI',
   ];
 
   return (
