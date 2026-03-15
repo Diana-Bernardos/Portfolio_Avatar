@@ -7,8 +7,8 @@ import family from '../assets/family.png';
 import libro from '../assets/ebook-example.jpg';
 import calculadora from '../assets/Calculadora.png';
 import finnest from '../assets/Finest.png';
-import finnest1 from '../assets/Finest.png'; // Cambiar a '../assets/finnest-dash-1.png' después de añadir el archivo
-import finnest2 from '../assets/Finest.png'; // Cambiar a '../assets/finnest-dash-2.png' después de añadir el archivo
+import finnest1 from '../assets/finnest-dash-1.png.png';
+import finnest2 from '../assets/finnest-dash-2.png.png';
 
 import recetario from '../assets/recetario.png';
 
@@ -32,6 +32,7 @@ interface Project {
   solution?: string;
   impact?: string;
   secondaryImage?: string;
+  hoverPosition?: string; // e.g., 'right' or 'bottom'
 }
 
 
@@ -60,14 +61,15 @@ export function Projects() {
       longDescription: 'Sistema avanzado de finanzas personales que analiza, predice y categoriza gastos sin exponer datos a la nube. El reto central fue hacer accesible la IA financiera sin sacrificar privacidad, integrando Ollama como motor local para una inferencia fluida en la máquina del usuario.',
       image: finnest1,
       technologies: ['React + Vite', 'Tailwind CSS', 'Recharts', 'Node.js + Express', 'Sequelize', 'PostgreSQL', 'Ollama', 'Llama 3.2', 'Axios'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: 'https://fin-nest-2.vercel.app/',
+      githubUrl: 'https://github.com/Diana-Bernardos/FinNest.2.git',
       featured: true,
       role: 'Full-stack · Diseño UX',
       problem: 'Gestionar finanzas con IA requiere subir datos sensibles a la nube, comprometiendo la privacidad.',
       solution: 'Integración de Ollama con Llama 3.2 para procesamiento local, manteniendo una UX premium y fluida.',
       impact: '0 datos enviados al exterior. 4 módulos operativos (ahorros, gastos, análisis, predicción) con categorización automática.',
-      secondaryImage: finnest2
+      secondaryImage: finnest2,
+      hoverPosition: 'right'
     },
 
 
@@ -255,7 +257,11 @@ export function Projects() {
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className={`w-full h-full object-cover object-top transition-all duration-[3000ms] ease-in-out ${
+                        project.hoverPosition === 'right' ? 'group-hover:object-right' : 
+                        project.hoverPosition === 'bottom' ? 'group-hover:object-bottom' : 
+                        'group-hover:scale-105'
+                      }`}
                     />
                     
                     {/* Overlay interaction hint */}

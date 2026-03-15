@@ -53,8 +53,8 @@ const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({ onBack }) => {
       description: "Ahorra, para tus vacaciones, tu casa , o un finde, y pide un análisis de tus gastos mensuales a ver como puedes mejorar para lograrlo antes.",
       image: finnest,
       technologies: ["React", "MySql", "Node.js", "JS","ollama", "CSS"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://fin-nest-2.vercel.app/",
+      githubUrl: "https://github.com/Diana-Bernardos/FinNest.2.git",
       featured: false
     },
     {
