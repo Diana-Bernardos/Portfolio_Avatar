@@ -7,7 +7,11 @@ import family from '../assets/family.png';
 import libro from '../assets/ebook-example.jpg';
 import calculadora from '../assets/Calculadora.png';
 import finnest from '../assets/Finest.png';
+import finnest1 from '../assets/Finest.png'; // Cambiar a '../assets/finnest-dash-1.png' después de añadir el archivo
+import finnest2 from '../assets/Finest.png'; // Cambiar a '../assets/finnest-dash-2.png' después de añadir el archivo
+
 import recetario from '../assets/recetario.png';
+
 import shopping from '../assets/shopping.jpg';
 import easy from '../assets/easy_4.png';
 import study from '../assets/case.png';
@@ -27,7 +31,9 @@ interface Project {
   problem?: string;
   solution?: string;
   impact?: string;
+  secondaryImage?: string;
 }
+
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -48,6 +54,23 @@ export function Projects() {
       solution: 'Calendario + tareas + asistente IA con recomendaciones.',
       impact: 'Mejor claridad y menos fricción en la planificación diaria.'
     },
+    {
+      title: 'FinNest.2',
+      description: 'App de finanzas personales con IA local integrada.',
+      longDescription: 'Sistema avanzado de finanzas personales que analiza, predice y categoriza gastos sin exponer datos a la nube. El reto central fue hacer accesible la IA financiera sin sacrificar privacidad, integrando Ollama como motor local para una inferencia fluida en la máquina del usuario.',
+      image: finnest1,
+      technologies: ['React + Vite', 'Tailwind CSS', 'Recharts', 'Node.js + Express', 'Sequelize', 'PostgreSQL', 'Ollama', 'Llama 3.2', 'Axios'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: true,
+      role: 'Full-stack · Diseño UX',
+      problem: 'Gestionar finanzas con IA requiere subir datos sensibles a la nube, comprometiendo la privacidad.',
+      solution: 'Integración de Ollama con Llama 3.2 para procesamiento local, manteniendo una UX premium y fluida.',
+      impact: '0 datos enviados al exterior. 4 módulos operativos (ahorros, gastos, análisis, predicción) con categorización automática.',
+      secondaryImage: finnest2
+    },
+
+
     {
       title: 'Recetario Sin Gluten',
       description: 'Recetario personalizado con IA para crear menús y compras sin gluten.',
@@ -103,7 +126,7 @@ export function Projects() {
       featured: false
     },
     {
-      title: 'FinNest Dashboard',
+      title: 'FinNest Classic',
       description: 'Analisis de gastos y metas de ahorro con visualizaciones.',
       image: finnest,
       technologies: ['React', 'MySQL', 'Node.js', 'JS', 'Ollama'],
@@ -111,6 +134,7 @@ export function Projects() {
       githubUrl: '#',
       featured: false
     },
+
     {
       title: 'My Shopping List',
       description: 'Gestion de listas de compra y menus semanales.',
@@ -346,10 +370,43 @@ export function Projects() {
                 </div>
 
                 <div className="prose prose-lg max-w-none mb-8 text-gray-300 leading-relaxed">
-                  <p>
+                  <p className="mb-6">
                     {selectedProject.longDescription || selectedProject.description}
                   </p>
+                  
+                  {selectedProject.problem && (
+                    <div className="mb-6">
+                      <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">El Problema</h4>
+                      <p className="text-gray-400">{selectedProject.problem}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.solution && (
+                    <div className="mb-6">
+                      <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">La Solución</h4>
+                      <p className="text-gray-400">{selectedProject.solution}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.impact && (
+                    <div className="mb-6">
+                      <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">Impacto Clave</h4>
+                      <p className="text-gray-400">{selectedProject.impact}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.secondaryImage && (
+                    <div className="mt-8 rounded-2xl overflow-hidden border border-[#333333]">
+                      <img
+                        src={selectedProject.secondaryImage}
+                        alt={`${selectedProject.title} dashboard view`}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  )}
                 </div>
+
+
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-[#333333]">
                   {selectedProject.liveUrl && selectedProject.liveUrl !== '#' && (
