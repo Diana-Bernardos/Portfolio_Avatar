@@ -1,10 +1,26 @@
-import { FileDown, Github, Linkedin } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
+import { motion, Variants, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
-import avatar from '../assets/images/avatar-hero.png';
+import avatar1 from '../assets/images/avatar-hero.png';
+import avatar2 from '../assets/images/avatar.png';
+import avatar3 from '../assets/images/avatar-about.png';
 import cvPdf from '../assets/docs/CV.pdf';
+import { ScrollCanvas } from './ScrollCanvas';
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Parallax transforms for text elements
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const avatarScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
+  const avatarY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -19,14 +35,22 @@ export function Hero() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
   };
 
+  const images = [avatar1, avatar2, avatar3];
+
   return (
-    <header id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#121212] pt-20">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 px-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-      >
+    <header 
+      id="home" 
+      ref={containerRef}
+      className="relative h-[200vh] bg-[#121212] overflow-visible"
+    >
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+        <motion.div
+          style={{ y: textY, opacity: textOpacity }}
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative z-10 px-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left mt-8 lg:mt-0">
           <motion.div
             variants={item}
@@ -82,25 +106,38 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Side - Avatar */}
+        {/* Right Side - Avatar / ScrollCanvas */}
         <motion.div
            variants={item}
-           className="hidden md:flex justify-center items-center w-full relative"
+           style={{ scale: avatarScale, y: avatarY }}
+           className="hidden md:flex justify-center items-center w-full relative h-[400px] md:h-[600px]"
         >
-          {/* Subtle decoration retaining the dark ambient feel */}
+          {/* Subtle decoration */}
           <div className="absolute w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
           
-          <div className="relative z-10 w-full max-w-lg">
-             <motion.img 
-               src={avatar} 
-               alt="Diana Avatar 3D" 
-               className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-               animate={{ y: [0, -15, 0] }}
-               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-             />
+          <div className="relative z-10 w-full h-full max-w-lg flex items-center justify-center">
+             <ScrollCanvas images={images} containerRef={containerRef} />
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Scroll indicator overlay */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        style={{ opacity: textOpacity }}
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">Scroll para explorar</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <ChevronDown className="w-5 h-5 text-accent" />
+        </motion.div>
+      </motion.div>
+      </div>
     </header>
   );
 }

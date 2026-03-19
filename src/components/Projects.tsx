@@ -197,8 +197,8 @@ export function Projects() {
           </motion.div>
         </div>
 
-        {/* Featured Projects (Mobile Mockup Layout) */}
-        <div className="space-y-24 md:space-y-32 mb-24 md:mb-32">
+        {/* Featured Projects (Modern Asymmetrical Layout) */}
+        <div className="space-y-32 md:space-y-48 mb-32">
           {featured.map((project, index) => (
             <motion.div
               key={index}
@@ -206,72 +206,67 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 md:gap-16 items-center`}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 md:gap-20 items-center`}
             >
               {/* Content Description */}
-              <div className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left">
-                <span className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-4">Caso Destacado</span>
-                <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tighter">
+              <div className="w-full lg:w-5/12 flex flex-col items-start justify-center text-left">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-[1px] bg-accent" />
+                  <span className="text-accent font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">Estudio de Caso</span>
+                </div>
+                
+                <h3 className="text-4xl md:text-6xl font-extrabold text-white mb-8 leading-[1.1] tracking-tighter font-display">
                   {project.title}
                 </h3>
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 font-medium">
+                
+                <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 font-medium max-w-lg">
                   {project.longDescription || project.description}
                 </p>
                 
                 {project.role && (
-                  <div className="mb-8">
-                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Rol en el proyecto</p>
-                    <p className="text-base font-semibold text-white">{project.role}</p>
+                  <div className="mb-10 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm w-full">
+                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Rol & Responsabilidades</p>
+                    <p className="text-base font-semibold text-gray-200">{project.role}</p>
                   </div>
                 )}
                 
                 <div className="flex gap-4 w-full sm:w-auto">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedProject(project)}
-                    className="w-full sm:w-auto px-10 py-4 bg-accent text-[#121212] rounded-xl font-bold flex items-center justify-center hover:bg-yellow-400 transition-all shadow-xl text-lg"
+                    className="w-full sm:w-auto px-10 py-5 bg-accent text-[#121212] rounded-2xl font-bold flex items-center justify-center hover:shadow-[0_0_30px_rgba(255,206,50,0.3)] transition-all text-lg"
                   >
-                    View project
-                  </button>
+                    Ver Detalles
+                  </motion.button>
                 </div>
               </div>
 
-              {/* Image Frame - Mobile Simulation */}
-              <div className="w-full lg:w-1/2 flex justify-center">
-                {/* Mobile Device Mockup */}
-                <div 
-                  className="relative mx-auto border-[#333333] bg-[#121212] border-[12px] md:border-[14px] rounded-[2.5rem] md:rounded-[3rem] h-[550px] w-[275px] md:h-[650px] md:w-[325px] shadow-2xl transition-transform duration-500 hover:-translate-y-4 cursor-pointer group"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  {/* Notch / Speaker hole */}
-                  <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20">
-                    <div className="w-24 h-4 md:h-5 bg-[#333333] rounded-b-xl"></div>
-                  </div>
-                  {/* Buttons */}
-                  <div className="h-[32px] w-[3px] bg-[#333333] absolute -left-[15px] md:-left-[17px] top-[72px] rounded-l-lg"></div>
-                  <div className="h-[46px] w-[3px] bg-[#333333] absolute -left-[15px] md:-left-[17px] top-[124px] rounded-l-lg"></div>
-                  <div className="h-[46px] w-[3px] bg-[#333333] absolute -left-[15px] md:-left-[17px] top-[178px] rounded-l-lg"></div>
-                  <div className="h-[64px] w-[3px] bg-[#333333] absolute -right-[15px] md:-right-[17px] top-[142px] rounded-r-lg"></div>
+              {/* Image Showcase - More modern frame */}
+              <div className="w-full lg:w-7/12 relative group cursor-pointer" onClick={() => setSelectedProject(project)}>
+                <div className="absolute -inset-4 bg-accent/5 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 bg-[#1E1E1E] shadow-2xl">
+                  <motion.img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className={`w-full h-full object-cover transition-all duration-[2000ms] ease-out ${
+                      project.hoverPosition === 'right' ? 'group-hover:translate-x-[-10%]' : 
+                      project.hoverPosition === 'bottom' ? 'group-hover:translate-y-[-10%]' : 
+                      'group-hover:scale-110'
+                    }`}
+                  />
                   
-                  {/* Screen Content */}
-                  <div className="rounded-[1.5rem] md:rounded-[2rem] overflow-hidden w-full h-full bg-[#1E1E1E] relative">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className={`w-full h-full object-cover object-top transition-all duration-[3000ms] ease-in-out ${
-                        project.hoverPosition === 'right' ? 'group-hover:object-right' : 
-                        project.hoverPosition === 'bottom' ? 'group-hover:object-bottom' : 
-                        'group-hover:scale-105'
-                      }`}
-                    />
-                    
-                    {/* Overlay interaction hint */}
-                    <div className="absolute inset-0 bg-accent/0 group-hover:bg-[#121212]/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
-                      <div className="bg-accent text-[#121212] px-6 py-3 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        Abrir Demo
-                      </div>
+                  {/* Glass Overlay on Hover */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="bg-white text-black px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest transform translate-y-8 group-hover:translate-y-0 transition-all duration-500 shadow-2xl">
+                      Explorar Proyecto
                     </div>
                   </div>
                 </div>
+
+                {/* Decorative Elements */}
+                <div className={`absolute -bottom-6 ${index % 2 === 0 ? '-right-6' : '-left-6'} w-32 h-32 bg-accent/20 rounded-full blur-3xl -z-10`} />
               </div>
             </motion.div>
           ))}
@@ -282,38 +277,39 @@ export function Projects() {
            <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight font-display">Más proyectos</h3>
         </div>
 
-        {/* Regular Projects Grid matching "My works" reference exact layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Regular Projects Grid - Masonry style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {visibleSecondary.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#1E1E1E] rounded-[2rem] overflow-hidden shadow-xl border border-[#333333] transition-all duration-300 hover:-translate-y-2 flex flex-col group cursor-pointer"
+              className={`bg-[#1E1E1E]/50 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 transition-all duration-500 hover:-translate-y-3 flex flex-col group cursor-pointer ${
+                index === 1 ? 'lg:translate-y-8' : ''
+              }`}
               onClick={() => setSelectedProject(project)}
             >
-              <div className="aspect-[16/11] overflow-hidden relative border-b border-[#333333]">
+              <div className="aspect-[1.2] overflow-hidden relative border-b border-white/5">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-60" />
               </div>
-              <div className="p-6 md:p-8 flex flex-col flex-grow items-center text-center">
-                <h4 className="text-xl font-bold text-white tracking-tight mb-3">
+              <div className="p-8 md:p-10 flex flex-col flex-grow">
+                <h4 className="text-2xl font-bold text-white tracking-tight mb-4 group-hover:text-accent transition-colors">
                   {project.title}
                 </h4>
-                <p className="text-sm text-gray-300 mb-6 leading-relaxed flex-grow font-medium">
+                <p className="text-base text-gray-400 mb-10 leading-relaxed flex-grow font-medium">
                   {project.description}
                 </p>
                 <div className="w-full mt-auto">
-                  <button
-                    className="w-full py-3.5 bg-accent text-[#121212] rounded-xl font-bold hover:bg-yellow-400 transition-all shadow-sm"
-                  >
-                    View project
-                  </button>
+                  <div className="flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-widest group-hover:gap-4 transition-all">
+                    Explorar <ExternalLink className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
             </motion.div>
