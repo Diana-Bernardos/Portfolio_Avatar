@@ -5,24 +5,23 @@
 @tailwind utilities;
 
 :root {
-  /* Using the dark purple theme as default for both */
-  --color-bg: 18 18 18; /* #121212 */
-  --color-surface: 30 30 30; /* #181818 */
-  --color-primary: 255 255 255;
-  --color-secondary: 179 168 200; /* #B3A8C8 */
-  --color-accent: 255 206 50; /* #FFCE32 (Yellow) */
-  --color-accent2: 255 206 50; /* #FFCE32 (Yellow) */
-  --color-border: 51 51 51; /* #333333 */
+  --color-bg: 18 24 29;
+  --color-surface: 100 117 117;
+  --color-primary: 246 242 244;
+  --color-secondary: 200 215 217;
+  --color-accent: 244 198 205;
+  --color-accent2: 186 226 232;
+  --color-border: 131 151 153;
 }
 
 .dark {
-  --color-bg: 18 18 18;
-  --color-surface: 30 30 30;
-  --color-primary: 255 255 255;
-  --color-secondary: 179 168 200;
-  --color-accent: 255 206 50;
-  --color-accent2: 255 206 50;
-  --color-border: 51 51 51;
+  --color-bg: 18 24 29;
+  --color-surface: 100 117 117;
+  --color-primary: 246 242 244;
+  --color-secondary: 200 215 217;
+  --color-accent: 244 198 205;
+  --color-accent2: 186 226 232;
+  --color-border: 131 151 153;
 }
 
 @layer base {
@@ -80,6 +79,82 @@
   background-color: rgb(var(--color-bg));
 }
 
+.accordion-scroll-shell {
+  isolation: isolate;
+}
+
+.accordion-panel {
+  position: relative;
+  position: sticky;
+  overflow: hidden;
+  border-radius: 2.5rem;
+  border: 1px solid rgba(var(--color-accent2), 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(var(--color-surface), 0.62) 14%, rgba(var(--color-bg), 0.92) 100%),
+    radial-gradient(circle at top left, rgba(var(--color-accent), 0.1), transparent 26%),
+    radial-gradient(circle at top right, rgba(var(--color-accent2), 0.1), transparent 32%);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform-origin: center top;
+  will-change: transform, opacity, box-shadow;
+}
+
+.accordion-panel-overlap {
+  margin-top: -6.5rem;
+}
+
+.accordion-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.accordion-panel::after {
+  content: '';
+  position: absolute;
+  inset: auto -12% -80px auto;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(var(--color-accent), 0.18), transparent 68%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.accordion-panel > section {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+.liquid-focus-glow {
+  position: absolute;
+  inset: -18% -32%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 24%, rgba(255, 255, 255, 0.04) 34%, rgba(var(--color-accent2), 0.2) 48%, rgba(var(--color-accent), 0.18) 56%, rgba(255, 255, 255, 0.03) 66%, transparent 76%);
+  filter: blur(22px);
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 768px) {
+  .accordion-panel-overlap {
+    margin-top: -4.5rem;
+  }
+
+  .accordion-panel {
+    border-radius: 2rem;
+  }
+}
+
 .glow-card {
   position: relative;
   overflow: hidden;
@@ -125,4 +200,3 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-secondary/50;
 }
-

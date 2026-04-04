@@ -33,6 +33,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Inicio', id: 'home' },
     { name: 'Sobre mi', id: 'about' },
+    { name: 'Proceso', id: 'process' },
     { name: 'Trayectoria', id: 'experience' },
     { name: 'Proyectos', id: 'projects' },
     { name: 'Contacto', id: 'contact' },
@@ -43,7 +44,7 @@ export function Navbar() {
       className={twMerge(
         'fixed w-full z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-[#121212]/90 backdrop-blur-md py-4 shadow-lg'
+          ? 'bg-background/90 backdrop-blur-md py-4 shadow-lg'
           : 'bg-transparent py-6'
       )}
     >
@@ -51,7 +52,7 @@ export function Navbar() {
         <div className="flex justify-between items-center">
           <Link
             to="/"
-            className="text-2xl font-bold text-white tracking-tight font-display cursor-pointer"
+            className="text-2xl font-bold text-primary tracking-tight font-display cursor-pointer"
           >
             Diana.
           </Link>
@@ -61,7 +62,7 @@ export function Navbar() {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.id)}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative pb-1"
+                className="text-sm font-medium text-secondary hover:text-primary transition-colors relative pb-1"
               >
                 {link.name}
               </button>
@@ -71,7 +72,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-2"
+              className="text-primary p-2"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -85,14 +86,14 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden absolute top-full left-0 w-full bg-[#1E1E1E] border-b border-[#333333] shadow-xl"
+            className="md:hidden absolute top-full left-0 w-full bg-[rgb(var(--color-surface))] border-b border-borderC shadow-xl"
           >
             <div className="px-6 py-6 flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.id)}
-                  className="text-left text-lg font-medium text-gray-300 hover:text-white transition-colors"
+                  className="text-left text-lg font-medium text-secondary hover:text-primary transition-colors"
                 >
                   {link.name}
                 </button>
