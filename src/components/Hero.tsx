@@ -167,14 +167,14 @@ export function Hero() {
                 Hola, soy Diana.
               </span>
               <h1 className="mb-6 bg-[linear-gradient(135deg,rgb(var(--color-gradient-start))_0%,rgb(var(--color-primary))_46%,rgb(var(--color-gradient-end))_100%)] bg-clip-text font-display text-4xl font-extrabold leading-[1.1] tracking-tighter text-transparent sm:text-6xl md:text-7xl">
-                De gestion hospitalaria <br /> a frontend con IA
+                Frontend Developer <br /> UX/UI & IA aplicada
               </h1>
               <p className="max-w-xl text-base font-medium leading-relaxed text-primary/80 md:text-lg">
-                Despues de 18 anos coordinando procesos complejos en entorno hospitalario, ahora diseno y desarrollo productos digitales claros, utiles y listos para negocio.
+                Diseno y desarrollo productos digitales claros, intuitivos y visualmente solidos, combinando frontend moderno con una mirada muy centrada en la experiencia de usuario.
               </p>
               <br />
               <p className="max-w-xl text-primary/85">
-                Combino UX/UI, frontend moderno e inteligencia artificial para construir herramientas con criterio operativo real, especialmente en healthtech y software B2B.
+                Me interesa crear herramientas utiles, con buena narrativa visual y decisiones de producto que tengan sentido en contextos reales.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
