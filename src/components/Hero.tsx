@@ -113,74 +113,50 @@ export function Hero() {
                 scale: 1,
               };
 
-  const avatarMotionTransition =
-    activeReaction === 'ai'
-      ? { duration: 1.1, ease: 'easeInOut', repeat: Infinity }
-      : activeReaction
-        ? { duration: 0.9, ease: 'easeInOut' }
-        : { duration: 0.7, ease: 'easeInOut' };
+  const avatarMotionTransition = activeReaction ? { duration: 0.9, ease: 'easeInOut' } : { duration: 0.7, ease: 'easeInOut' };
 
   return (
     <header id="home" ref={containerRef} className="relative h-[200vh] overflow-visible bg-background">
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden pt-20">
         <div className="pointer-events-none absolute inset-0 opacity-70">
-          <motion.svg
+          <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1440 900"
             fill="none"
             preserveAspectRatio="none"
-            animate={{ opacity: [0.62, 0.8, 0.62] }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           >
             {neuralLines.map((line) => (
-              <motion.path
+              <path
                 key={line.d}
                 d={line.d}
                 stroke={line.color}
                 strokeWidth="1.2"
                 strokeDasharray={line.dashed ? '5 12' : undefined}
-                initial={{ pathLength: 0.85, opacity: 0.45 }}
-                animate={{ pathLength: [0.85, 1, 0.85], opacity: [0.35, 0.8, 0.35] }}
-                transition={{ duration: line.dashed ? 8 : 10, repeat: Infinity, ease: 'easeInOut' }}
+                opacity="0.42"
               />
             ))}
 
             {neuralNodes.map((node, index) => (
-              <motion.g
+              <g
                 key={`${node.cx}-${node.cy}`}
-                animate={{
-                  x: [0, index % 2 === 0 ? 3 : -3, 0],
-                  y: [0, index % 3 === 0 ? -4 : 4, 0],
-                }}
-                transition={{
-                  duration: 6 + (index % 3),
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: node.delay,
-                }}
               >
-                <motion.circle
+                <circle
                   cx={node.cx}
                   cy={node.cy}
                   r="10"
                   fill={node.fill}
-                  initial={{ scale: 0.9, opacity: 0.12 }}
-                  animate={{ scale: [0.9, 1.6, 0.9], opacity: [0.08, 0.2, 0.08] }}
-                  transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut', delay: node.delay }}
-                  style={{ transformOrigin: `${node.cx}px ${node.cy}px` }}
+                  opacity={index % 2 === 0 ? '0.12' : '0.16'}
                 />
-                <motion.circle
+                <circle
                   cx={node.cx}
                   cy={node.cy}
                   r="3.5"
                   fill={node.fill}
-                  animate={{ scale: [1, 1.25, 1], opacity: [0.85, 1, 0.85] }}
-                  transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut', delay: node.delay }}
-                  style={{ transformOrigin: `${node.cx}px ${node.cy}px` }}
+                  opacity="0.9"
                 />
-              </motion.g>
+              </g>
             ))}
-          </motion.svg>
+          </svg>
         </div>
 
         <motion.div
@@ -276,14 +252,14 @@ export function Hero() {
             className="relative hidden h-[360px] w-full items-center justify-center md:flex md:h-[540px] lg:h-[520px]"
           >
             <div className="pointer-events-none absolute h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[90px] lg:h-[280px] lg:w-[280px]" />
-            <motion.div
-              className="absolute left-8 top-10 rounded-2xl border border-accent/20 bg-[rgb(var(--color-surface))]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(0,209,255,0.12)]"
-              animate={
-                activeReaction === 'ai'
+              <motion.div
+                className="absolute left-8 top-10 rounded-2xl border border-accent/20 bg-[rgb(var(--color-surface))]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(0,209,255,0.12)]"
+                animate={
+                  activeReaction === 'ai'
                   ? { y: [-2, -10, -2], scale: [1, 1.03, 1] }
-                  : activeReaction === 'ux'
-                    ? { y: [0, -6, 0], x: [0, 2, 0] }
-                    : activeReaction === 'frontend'
+                    : activeReaction === 'ux'
+                      ? { y: [0, -6, 0], x: [0, 2, 0] }
+                      : activeReaction === 'frontend'
                       ? { y: [0, -4, 0], x: [0, -2, 2, 0] }
                       : activeReaction === 'greeting'
                         ? { y: [-2, -8, -2] }
@@ -291,7 +267,7 @@ export function Hero() {
               }
               transition={
                 activeReaction === 'ai'
-                  ? { duration: 1.2, repeat: Infinity, ease: 'easeInOut' }
+                  ? { duration: 1.2, ease: 'easeInOut' }
                   : activeReaction
                     ? { duration: 0.9, ease: 'easeInOut' }
                     : { duration: 0.7, ease: 'easeInOut' }
@@ -329,18 +305,16 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
-          style={{ opacity: textOpacity }}
-        >
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/80">Scroll para explorar</span>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-            <ChevronDown className="h-5 w-5 text-accent" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
+            style={{ opacity: textOpacity }}
+          >
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/80">Scroll para explorar</span>
+          <ChevronDown className="h-5 w-5 text-accent" />
           </motion.div>
-        </motion.div>
       </div>
     </header>
   );

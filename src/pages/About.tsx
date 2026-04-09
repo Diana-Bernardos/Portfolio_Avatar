@@ -18,8 +18,6 @@ export default function About() {
               src="https://images.pexels.com/photos/22046267/pexels-photo-22046267.jpeg?cs=srgb&dl=pexels-silverkblack-22046267.jpg&fm=jpg"
               alt="Woman working on laptop in a modern office"
               className="h-[520px] w-[430px] object-cover object-[center_18%] scale-[1.03]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 0.8 }}
             />
           </div>
         </motion.div>
