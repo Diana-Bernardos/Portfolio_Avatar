@@ -33,7 +33,7 @@ export function Experience() {
       period: '2025 - 2027',
     },
     {
-      title: ' Bootcamp Desarrollo Web',
+      title: 'Bootcamp Desarrollo Web',
       institution: 'Adalab Escuela de Formacion Digital',
       period: '03/2024',
     },
@@ -45,13 +45,13 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="scroll-mt-28 overflow-hidden border-t border-[#161B22] bg-background py-24">
+    <section id="experience" className="scroll-mt-28 overflow-hidden border-t border-[#161B22] bg-background py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-12 text-center"
         >
           <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Trayectoria</h2>
           <p className="mx-auto max-w-2xl text-lg text-primary/78">
@@ -59,9 +59,9 @@ export function Experience() {
           </p>
         </motion.div>
 
-        <div className="grid gap-16 md:grid-cols-2 md:gap-12">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-10">
           <div>
-            <div className="mb-10 flex items-center gap-3">
+            <div className="mb-8 flex items-center gap-3">
               <div className="rounded-xl border border-[#161B22] bg-[rgb(var(--color-surface))] p-3 text-accent2">
                 <Briefcase className="h-6 w-6" />
               </div>
@@ -71,7 +71,7 @@ export function Experience() {
             <div className="relative pl-8 md:pl-0">
               <div className="absolute bottom-4 left-[15px] top-4 w-0.5 bg-gradient-to-b from-accent/80 via-accent2/35 to-transparent" />
 
-              <div className="space-y-12">
+              <div className="space-y-8">
                 {experiences.map((exp, index) => (
                   <motion.div
                     key={index}
@@ -79,11 +79,11 @@ export function Experience() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-100px' }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative md:pl-12"
+                      className="relative md:pl-10"
                   >
                     <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="rounded-2xl border border-[#161B22] p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
+                    <div className="group rounded-2xl border border-[#161B22] p-5 transition-colors duration-300 hover:border-accent/60 surface-gradient">
                       <div className="mb-4 flex flex-col">
                         <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{exp.period}</span>
                         <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{exp.title}</h4>
@@ -98,7 +98,7 @@ export function Experience() {
           </div>
 
           <div className="mt-8 md:mt-0">
-            <div className="mb-10 flex items-center gap-3">
+                  <div className="mb-8 flex items-center gap-3">
               <div className="rounded-xl border border-[#161B22] bg-[rgb(var(--color-surface))] p-3 text-accent2">
                 <GraduationCap className="h-6 w-6" />
               </div>
@@ -108,7 +108,7 @@ export function Experience() {
             <div className="relative pl-8 md:pl-0">
               <div className="absolute bottom-4 left-[15px] top-4 w-0.5 bg-gradient-to-b from-accent/80 via-accent2/35 to-transparent" />
 
-              <div className="space-y-12">
+              <div className="space-y-8">
                 {education.map((edu, index) => (
                   <motion.div
                     key={index}
@@ -116,11 +116,11 @@ export function Experience() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-100px' }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative md:pl-12"
+                      className="relative md:pl-10"
                   >
                     <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="rounded-2xl border border-[#161B22] p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
+                    <div className="group rounded-2xl border border-[#161B22] p-5 transition-colors duration-300 hover:border-accent/60 surface-gradient">
                       <div className="flex flex-col">
                         <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{edu.period}</span>
                         <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{edu.title}</h4>

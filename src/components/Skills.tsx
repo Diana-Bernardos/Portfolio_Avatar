@@ -51,7 +51,7 @@ export function Skills() {
         >
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-primary md:text-4xl">My skills</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary/78 md:text-lg">
-            Un resumen rápido de mi stack principal para que se lea de un vistazo, sin ruido visual.
+            Un resumen rapido de mi stack principal para que se lea de un vistazo, sin ruido visual.
           </p>
         </motion.div>
 

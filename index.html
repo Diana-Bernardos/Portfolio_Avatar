@@ -4,13 +4,81 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta name="description" content="Portfolio de Diana Bernardos, Frontend & UX Designer especializada en interfaces escalables, accesibles y potenciadas por IA." />
     <title>Diana Bernardos | Frontend & UX Designer</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Diana Bernardos",
+            "jobTitle": "Frontend Developer & UX/UI Designer",
+            "email": "dianabernardosm@gmail.com",
+            "url": "/",
+            "sameAs": [
+              "https://github.com/Diana-Bernardos",
+              "https://www.linkedin.com/in/diana-bernardos-moraleda-536378223"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Diana Bernardos | Frontend & UX Designer",
+            "url": "/",
+            "description": "Portfolio de Diana Bernardos, especializada en frontend, UX/UI e inteligencia artificial."
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <main>
+        <header>
+          <h1>Diana Bernardos</h1>
+          <p>Frontend Developer & UX/UI Designer especializada en productos digitales centrados en el usuario y en soluciones con inteligencia artificial.</p>
+        </header>
+
+        <section aria-labelledby="about-title">
+          <h2 id="about-title">Sobre mi</h2>
+          <p>
+            Mi trayectoria profesional comenzo en el ambito sanitario, donde desarrolle organizacion, precision y gestion de procesos complejos.
+            Hoy aplico esa base al diseno y desarrollo web, combinando UX/UI, frontend moderno y automatizacion con IA.
+          </p>
+        </section>
+
+        <section aria-labelledby="work-title">
+          <h2 id="work-title">Proyectos destacados</h2>
+          <ul>
+            <li>
+              <strong>FinNest.2</strong> - App de finanzas personales con IA local integrada. Stack: React, Vite, Tailwind, Node, Express, Sequelize, PostgreSQL, Ollama.
+            </li>
+            <li>
+              <strong>SmartHome AI</strong> - Asistente domotico con IA para controlar dispositivos y automatizar rutinas.
+            </li>
+            <li>
+              <strong>Family Planner</strong> - Calendario familiar con asistente inteligente para coordinar tareas y eventos.
+            </li>
+            <li>
+              <strong>Recetario Sin Gluten</strong> - Recetario personalizado con IA para crear menus y compras sin gluten.
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="contact-title">
+          <h2 id="contact-title">Contacto</h2>
+          <ul>
+            <li>Email: <a href="mailto:dianabernardosm@gmail.com">dianabernardosm@gmail.com</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/diana-bernardos-moraleda-536378223">Diana Bernardos</a></li>
+            <li>GitHub: <a href="https://github.com/Diana-Bernardos">@Diana-Bernardos</a></li>
+          </ul>
+        </section>
+      </main>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

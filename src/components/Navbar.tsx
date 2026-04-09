@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,14 +19,9 @@ export function Navbar() {
   const handleNavClick = (id: string) => {
     setIsMenuOpen(false);
 
-    if (location.pathname !== '/') {
-      navigate('/#' + id);
-      return;
-    }
-
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -53,9 +45,16 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex items-center justify-between">
-          <Link to="/" className="font-display text-2xl font-bold tracking-tight text-primary">
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('home');
+            }}
+            className="font-display text-2xl font-bold tracking-tight text-primary"
+          >
             Diana.
-          </Link>
+          </a>
 
           <div className="hidden items-center space-x-8 md:flex">
             {navLinks.map((link) => (

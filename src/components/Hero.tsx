@@ -106,8 +106,8 @@ export function Hero() {
   const avatarMotionTransition = activeReaction ? { duration: 0.9, ease: 'easeInOut' } : { duration: 0.7, ease: 'easeInOut' };
 
   return (
-    <header id="home" className="relative overflow-hidden bg-background py-20 md:py-24">
-      <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden pt-10 md:pt-20">
+    <header id="home" className="relative overflow-hidden bg-background py-16 md:py-20">
+      <div className="flex min-h-[92vh] flex-col items-center justify-center overflow-hidden pt-8 md:pt-14">
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <svg
             className="absolute inset-0 h-full w-full"
@@ -239,7 +239,7 @@ export function Hero() {
             transition={avatarMotionTransition}
             className="relative hidden h-[360px] w-full items-center justify-center md:flex md:h-[540px] lg:h-[520px]"
           >
-            <div className="pointer-events-none absolute h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[90px] lg:h-[280px] lg:w-[280px]" />
+            <div className="pointer-events-none absolute h-[280px] w-[280px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[82px] lg:h-[240px] lg:w-[240px]" />
               <motion.div
                 className="absolute left-8 top-10 rounded-2xl border border-accent/20 bg-[rgb(var(--color-surface))]/80 px-4 py-3 backdrop-blur-md shadow-[0_0_30px_rgba(0,209,255,0.12)]"
                 animate={
@@ -266,9 +266,9 @@ export function Hero() {
               </p>
               <p className="mt-2 text-sm font-semibold text-primary">
                 {activeReaction === 'frontend'
-                  ? 'UI con ritmo y precisión'
+                  ? 'UI con ritmo y precision'
                   : activeReaction === 'ux'
-                    ? 'UX que guía sin ruido'
+                    ? 'UX que guia sin ruido'
                     : activeReaction === 'ai'
                       ? 'AI-powered product thinking'
                       : 'AI-powered product thinking'}
