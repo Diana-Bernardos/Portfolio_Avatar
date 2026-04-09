@@ -282,7 +282,7 @@ export function Projects() {
 
                     <h3 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tighter text-primary md:text-[2.6rem]">{project.title}</h3>
                     <p className="mt-2 max-w-2xl text-sm leading-relaxed text-primary/78 md:text-[15px]">
-                      {compactText(project.longDescription || project.description, 96)}
+                      {compactText(project.longDescription || project.description, 125)}
                     </p>
                   </div>
 
@@ -293,7 +293,7 @@ export function Projects() {
                   </div>
                   <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                     <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Impacto</p>
-                    <p className="text-sm font-semibold leading-snug text-primary">{compactText(project.impact || project.description, 60)}</p>
+                    <p className="text-sm font-semibold leading-snug text-primary">{compactText(project.impact || project.description, 72)}</p>
                   </div>
                 </div>
 
@@ -462,7 +462,7 @@ export function Projects() {
                     </div>
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Impacto</p>
-                      <p className="text-sm font-semibold leading-snug text-primary">{compactText(selectedProject.impact || selectedProject.description, 66)}</p>
+                      <p className="text-sm font-semibold leading-snug text-primary">{compactText(selectedProject.impact || selectedProject.description, 80)}</p>
                     </div>
                   </div>
 
@@ -477,11 +477,11 @@ export function Projects() {
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Problema</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Necesidad real detectada en el producto.', 54)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Necesidad real detectada en el producto.', 68)}</p>
                     </div>
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Solucion</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 54)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 68)}</p>
                     </div>
                   </div>
 

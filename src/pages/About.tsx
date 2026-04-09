@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ProfessionalExperience } from '../components/ProfessionalExperience';
 import { Certifications } from '../components/Certifications';
 
@@ -6,27 +5,19 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-28 bg-background py-24">
       <div className="mx-auto mb-24 grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="relative hidden h-[500px] w-full items-center justify-center md:flex"
-        >
+        <div className="relative hidden h-[500px] w-full items-center justify-center md:flex">
           <div className="pointer-events-none absolute h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[90px]" />
 
           <div className="relative z-10 overflow-hidden rounded-[2.1rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_26px_70px_rgba(0,0,0,0.28),0_0_0_1px_rgba(0,209,255,0.08)]">
-            <motion.img
+            <img
               src="https://images.pexels.com/photos/22046267/pexels-photo-22046267.jpeg?cs=srgb&dl=pexels-silverkblack-22046267.jpg&fm=jpg"
               alt="Woman working on laptop in a modern office"
-              className="h-[520px] w-[430px] object-cover object-[center_18%] scale-[1.03]"
+              className="h-[520px] w-[430px] object-cover object-[center_18%]"
             />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="surface-gradient relative z-10 w-full rounded-[2rem] border border-[#161B22] p-8 shadow-xl md:-ml-12 md:p-10 lg:-ml-20"
-        >
+        <div className="surface-gradient relative z-10 w-full rounded-[2rem] border border-[#161B22] p-8 shadow-xl md:-ml-12 md:p-10 lg:-ml-20">
           <h2 className="mb-6 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Sobre mi</h2>
           <p className="mb-6 text-lg font-medium leading-relaxed text-primary/80">
             Mi trayectoria profesional comenzo en el ambito sanitario, donde desarrolle habilidades clave como la organizacion, la precision y la gestion de procesos complejos.
@@ -65,7 +56,7 @@ export default function About() {
           <a href="#contact" className="inline-block rounded-xl px-8 py-3.5 font-bold transition-all shadow-md hover:-translate-y-1 neural-button">
             Contactar
           </a>
-        </motion.div>
+        </div>
       </div>
 
       <ProfessionalExperience />
