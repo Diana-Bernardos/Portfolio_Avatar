@@ -1,5 +1,6 @@
 import { ProfessionalExperience } from '../components/ProfessionalExperience';
 import { Certifications } from '../components/Certifications';
+import avatarAbout from '../assets/images/avatar-about.png';
 
 export default function About() {
   return (
@@ -10,9 +11,9 @@ export default function About() {
 
           <div className="relative z-10 overflow-hidden rounded-[2.1rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_26px_70px_rgba(0,0,0,0.28),0_0_0_1px_rgba(0,209,255,0.08)]">
             <img
-              src="https://images.pexels.com/photos/22046267/pexels-photo-22046267.jpeg?cs=srgb&dl=pexels-silverkblack-22046267.jpg&fm=jpg"
-              alt="Woman working on laptop in a modern office"
-              className="h-[440px] w-[380px] object-cover object-[center_20%]"
+              src={avatarAbout}
+              alt="Retrato de Diana Bernardos"
+              className="h-[440px] w-[380px] object-cover object-[center_18%]"
             />
           </div>
         </div>

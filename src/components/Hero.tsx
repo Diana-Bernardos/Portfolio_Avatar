@@ -1,4 +1,4 @@
-import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
+﻿import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
 
@@ -167,13 +167,15 @@ export function Hero() {
                 Hola, soy Diana.
               </span>
               <h1 className="mb-6 bg-[linear-gradient(135deg,rgb(var(--color-gradient-start))_0%,rgb(var(--color-primary))_46%,rgb(var(--color-gradient-end))_100%)] bg-clip-text font-display text-4xl font-extrabold leading-[1.1] tracking-tighter text-transparent sm:text-6xl md:text-7xl">
-                Frontend Developer & <br /> UX/UI Designer
+                De gestion hospitalaria <br /> a frontend con IA
               </h1>
               <p className="max-w-xl text-base font-medium leading-relaxed text-primary/80 md:text-lg">
-                Diseño y desarrollo productos digitales centrados en el usuario, combinando frontend moderno con soluciones basadas en inteligencia artificial.
+                Despues de 18 anos coordinando procesos complejos en entorno hospitalario, ahora diseno y desarrollo productos digitales claros, utiles y listos para negocio.
               </p>
               <br />
-              <p className="text-primary/85">Creo experiencias eficientes, intuitivas y con impacto real en negocio.</p>
+              <p className="max-w-xl text-primary/85">
+                Combino UX/UI, frontend moderno e inteligencia artificial para construir herramientas con criterio operativo real, especialmente en healthtech y software B2B.
+              </p>
 
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                 {heroSignals.map((signal) => (
@@ -306,3 +308,4 @@ export function Hero() {
     </header>
   );
 }
+
