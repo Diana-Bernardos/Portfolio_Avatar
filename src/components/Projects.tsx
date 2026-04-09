@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, BarChart3, ExternalLink, Github, Layers3, Sparkles, Target, X } from 'lucide-react';
 
@@ -37,6 +37,12 @@ interface Project {
   metrics: ProjectMetric[];
   category: string;
   scope: string;
+  aiDetails?: {
+    type: string;
+    purpose: string;
+    problemSolved: string;
+    uxImprovement: string;
+  };
 }
 
 const aiTechKeywords = ['ollama', 'openai', 'hugging', 'fastapi', 'python', 'llama', 'ai', 'ml', 'machine'];
@@ -65,6 +71,12 @@ const projects: Project[] = [
     ],
     category: 'Fintech + AI',
     scope: 'Producto completo',
+    aiDetails: {
+      type: 'LLM Local (Llama 3.2 vía Ollama)',
+      purpose: 'Clasificar gastos automáticamente leyendo datos brutos sin enviar datos sensibles a la nube.',
+      problemSolved: 'El miedo a la privacidad de datos bancarios y la categorización manual tediosa.',
+      uxImprovement: 'Interacción inmediata sin fricción de privacidad, permitiendo una visión clara sin trabajo manual del usuario.',
+    },
   },
   {
     title: 'SmartHome AI',
@@ -88,6 +100,12 @@ const projects: Project[] = [
     ],
     category: 'Smart home',
     scope: 'Producto funcional',
+    aiDetails: {
+      type: 'LLM Ligero Integrado (Ollama Phi3)',
+      purpose: 'Motor conversacional para interactuar con domótica y crear rutinas.',
+      problemSolved: 'La configuración de escenas complejas suele requerir interfaces largas y confusas.',
+      uxImprovement: 'Permite peticiones orgánicas y sugiere rutinas basadas en contexto contextual, simplificando la curva de aprendizaje.',
+    },
   },
   {
     title: 'Family Planner',
@@ -111,6 +129,12 @@ const projects: Project[] = [
     ],
     category: 'Productivity',
     scope: 'Caso funcional',
+    aiDetails: {
+      type: 'Asistente Integrado (Ollama)',
+      purpose: 'Asistir en la priorización y organización de tareas familiares compartidas.',
+      problemSolved: 'Sincronizar tiempo de varias personas genera choques y carga mental excesiva.',
+      uxImprovement: 'Proactividad en resolución de conflictos de calendario y propuestas de reparto de tareas más equilibradas.',
+    },
   },
   {
     title: 'Recetario Sin Gluten',
@@ -134,6 +158,12 @@ const projects: Project[] = [
     ],
     category: 'Food tech',
     scope: 'MVP avanzado',
+    aiDetails: {
+      type: 'Generación Estructurada (Ollama)',
+      purpose: 'Generar ideas de comidas semanales basándose en intolerancias concretas.',
+      problemSolved: 'Buscar recetas sin gluten seguras y planificar toda la semana toma muchísimo tiempo.',
+      uxImprovement: 'Con solo un par de clics el usuario tiene un menú completo filtrado, reduciendo drásticamente la fricción inicial.',
+    },
   },
   {
     title: 'Case Study Family Planner',
@@ -555,6 +585,33 @@ export function Projects() {
                       <p className="text-sm leading-relaxed text-primary/78">{compactText(selectedProject.solution, 140)}</p>
                     </div>
                   </div>
+
+                  {selectedProject.aiDetails && (
+                    <div className="rounded-[1.5rem] mt-2 mb-2 border border-accent/40 bg-[linear-gradient(135deg,rgba(0,209,255,0.06)_0%,transparent_100%)] p-4 sm:p-5">
+                      <div className="mb-4 flex items-center gap-2">
+                        <Sparkles className="h-4 w-4 text-accent" />
+                        <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-accent">Uso de IA en este proyecto</h4>
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <span className="block mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Tipo de IA</span>
+                          <span className="text-sm font-medium leading-relaxed text-primary/85">{selectedProject.aiDetails.type}</span>
+                        </div>
+                        <div>
+                          <span className="block mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Para qué servía</span>
+                          <span className="text-sm font-medium leading-relaxed text-primary/85">{selectedProject.aiDetails.purpose}</span>
+                        </div>
+                        <div>
+                          <span className="block mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Problema que resolvía</span>
+                          <span className="text-sm font-medium leading-relaxed text-primary/85">{selectedProject.aiDetails.problemSolved}</span>
+                        </div>
+                        <div>
+                          <span className="block mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Mejora en UX</span>
+                          <span className="text-sm font-medium leading-relaxed text-primary/85">{selectedProject.aiDetails.uxImprovement}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                     <div className="mb-4 flex items-center gap-2">

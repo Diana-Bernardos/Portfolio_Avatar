@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Hero } from '../components/Hero';
 import { Experience } from '../components/Experience';
 import { Process } from '../components/Process';
+import { AiExperience } from '../components/AiExperience';
 import { Skills } from '../components/Skills';
 import { Projects } from '../components/Projects';
 import { Contact } from '../components/Contact';
@@ -10,6 +11,7 @@ import About from './About';
 export default function Home() {
   const stackedSections = [
     <About key="about" />,
+    <AiExperience key="ai_experience" />,
     <Process key="process" />,
     <Experience key="experience" />,
     <Skills key="skills" />,

@@ -1,6 +1,6 @@
 import { ProfessionalExperience } from '../components/ProfessionalExperience';
 import { Certifications } from '../components/Certifications';
-import avatarAbout from '../assets/images/avatar-about.png';
+import avatarAbout from '../assets/161449179.jpeg';
 
 export default function About() {
   return (
@@ -21,16 +21,18 @@ export default function About() {
         <div className="surface-gradient relative z-10 w-full rounded-[1.75rem] border border-[#161B22] p-7 shadow-xl md:-ml-10 md:p-8 lg:-ml-16">
           <h2 className="mb-6 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Sobre mi</h2>
           <p className="mb-6 text-lg font-medium leading-relaxed text-primary/80">
-            Mi trayectoria profesional comenzo en el ambito sanitario, donde desarrolle habilidades clave como la organizacion, la precision y la gestion de procesos complejos.
+            Mi trayectoria profesional comenzó en el ámbito sanitario, donde desarrollé habilidades clave como la organización, la precisión y la gestión de procesos complejos.
             <br />
             <br />
-            Hoy aplico esa base al mundo digital, disenando y desarrollando productos web centrados en el usuario.
+            Hoy aplico esa base al mundo digital, diseñando y desarrollando productos web centrados en el usuario.
             <br />
             <br />
-            Trabajo combinando UX/UI, desarrollo frontend y soluciones con inteligencia artificial, incluyendo automatizacion de procesos, chatbots y aplicaciones inteligentes.
+            Trabajo combinando UX/UI, desarrollo frontend y soluciones con inteligencia artificial, incluyendo automatización de procesos, chatbots y aplicaciones que asisten al usuario en sus tareas diarias.
             <br />
             <br />
-            Me interesa especialmente crear herramientas utiles que mejoren la experiencia de las personas y optimicen el trabajo de los equipos.
+            <span className="block border-l-2 border-accent pl-4 text-primary font-semibold text-xl tracking-tight">
+              Me interesa especialmente el diseño de productos que combinan UX, desarrollo e inteligencia artificial para mejorar la experiencia del usuario.
+            </span>
           </p>
 
           <ul className="mb-8 space-y-4">

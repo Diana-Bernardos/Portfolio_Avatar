@@ -1,4 +1,4 @@
-﻿import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
+import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
 
@@ -170,7 +170,7 @@ export function Hero() {
                 Frontend Developer <br /> UX/UI & IA aplicada
               </h1>
               <p className="max-w-xl text-base font-medium leading-relaxed text-primary/80 md:text-lg">
-                Diseno y desarrollo productos digitales claros, intuitivos y visualmente solidos, combinando frontend moderno con una mirada muy centrada en la experiencia de usuario.
+                Diseño y desarrollo productos digitales intuitivos, incluyendo experiencias de usuario con IA como asistentes virtuales y chatbots.
               </p>
               <br />
               <p className="max-w-xl text-primary/85">

@@ -1,4 +1,4 @@
-import { Component, Server, Figma } from 'lucide-react';
+import { Component, Server, Figma, BrainCircuit } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const aiTechKeywords = ['ollama', 'openai', 'hugging', 'fastapi', 'python', 'llama', 'ai', 'ml'];
@@ -34,9 +34,15 @@ export function Skills() {
     },
     {
       icon: <Server className="h-10 w-10 text-primary" />,
-      title: 'Backend & AI',
-      description: 'Node.js, MySQL, Python, Ollama y FastAPI integrations',
-      tags: ['Node.js', 'Python', 'Ollama', 'FastAPI'],
+      title: 'Backend',
+      description: 'Node.js, MySQL, y desarrollo de APIs escalables',
+      tags: ['Node.js', 'Express', 'MySQL', 'APIs'],
+    },
+    {
+      icon: <BrainCircuit className="h-10 w-10 text-[#D8B4FF]" />,
+      title: 'AI & Automatización',
+      description: 'Ollama, n8n, Prompt design, Python e integraciones de IA',
+      tags: ['Ollama', 'Prompting', 'Python', 'n8n'],
     },
   ];
 
@@ -55,7 +61,7 @@ export function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {customItems.map((skill, index) => (
             <motion.div
               key={index}
