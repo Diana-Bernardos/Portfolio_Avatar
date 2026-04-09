@@ -5,8 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
-        display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        sans: ['Lexend', 'ui-sans-serif', 'system-ui'],
+        display: ['Lexend', 'ui-sans-serif', 'system-ui'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {
         background: 'rgb(var(--color-bg) / <alpha-value>)',

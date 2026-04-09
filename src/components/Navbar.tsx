@@ -14,19 +14,22 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavClick = (id: string) => {
     setIsMenuOpen(false);
+
     if (location.pathname !== '/') {
       navigate('/#' + id);
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      return;
+    }
+
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -42,39 +45,33 @@ export function Navbar() {
   return (
     <nav
       className={twMerge(
-        'fixed w-full z-50 transition-all duration-300',
+        'fixed z-50 w-full transition-all duration-300',
         isScrolled
-          ? 'bg-background/90 backdrop-blur-md py-4 shadow-lg'
+          ? 'border-b border-borderC/60 bg-background/80 py-4 shadow-[0_16px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl'
           : 'bg-transparent py-6'
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex justify-between items-center">
-          <Link
-            to="/"
-            className="text-2xl font-bold text-primary tracking-tight font-display cursor-pointer"
-          >
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="font-display text-2xl font-bold tracking-tight text-primary">
             Diana.
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden items-center space-x-8 md:flex">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.id)}
-                className="text-sm font-medium text-secondary hover:text-primary transition-colors relative pb-1"
+                className="pb-1 font-mono text-sm font-medium tracking-[0.16em] text-secondary transition-colors hover:text-accent"
               >
                 {link.name}
               </button>
             ))}
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-primary p-2"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <div className="flex items-center md:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-primary">
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -86,14 +83,14 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden absolute top-full left-0 w-full bg-[rgb(var(--color-surface))] border-b border-borderC shadow-xl"
+            className="glass-effect absolute left-0 top-full w-full border-b border-borderC/70 shadow-[0_22px_44px_rgba(0,0,0,0.34)] md:hidden"
           >
-            <div className="px-6 py-6 flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 px-6 py-6">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.id)}
-                  className="text-left text-lg font-medium text-secondary hover:text-primary transition-colors"
+                  className="text-left text-lg font-medium text-secondary transition-colors hover:text-accent"
                 >
                   {link.name}
                 </button>

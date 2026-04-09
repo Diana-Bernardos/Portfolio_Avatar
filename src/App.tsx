@@ -8,22 +8,25 @@ import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgress } from './components/ScrollProgress';
 import Home from './pages/Home';
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return null;
 }
 
 function ScrollUpButton() {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    const toggleVisibility = () => window.scrollY > 500 ? setIsVisible(true) : setIsVisible(false);
+    const toggleVisibility = () => (window.scrollY > 500 ? setIsVisible(true) : setIsVisible(false));
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -31,18 +34,17 @@ function ScrollUpButton() {
           initial={{ opacity: 0, y: 20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.8 }}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 p-4 bg-accent text-[#233033] rounded-full shadow-[0_0_18px_rgba(244,198,205,0.45)] hover:shadow-[0_0_28px_rgba(186,226,232,0.35)] transition-shadow z-50"
+          className="fixed bottom-8 right-8 z-50 rounded-full p-4 neural-button transition-all duration-300 hover:-translate-y-1"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="h-6 w-6" />
         </motion.button>
       )}
     </AnimatePresence>
   );
 }
-
 
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -51,6 +53,7 @@ function App() {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -60,15 +63,15 @@ function App() {
       <ScrollToTop />
       <ScrollProgress />
       <CustomCursor />
-      <div className="min-h-screen bg-background text-primary/85 selection:bg-accent/20 relative overflow-hidden">
-        {/* Global Spotlight Effect */}
-        <div 
+      <div className="relative min-h-screen overflow-hidden bg-background text-primary/85 selection:bg-accent/20">
+        <div
           className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300"
           style={{
-            background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(186,226,232,0.1), transparent 40%), radial-gradient(420px circle at 15% 20%, rgba(244,198,205,0.08), transparent 55%)`
+            background: `radial-gradient(620px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0,209,255,0.12), transparent 42%), radial-gradient(460px circle at 16% 18%, rgba(112,0,255,0.09), transparent 56%)`,
           }}
         />
-        <div className="relative z-10 flex flex-col min-h-screen">
+
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
 
           <main className="flex-grow">

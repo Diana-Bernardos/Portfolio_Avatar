@@ -33,7 +33,7 @@ export function Experience() {
       period: '2025 - 2027',
     },
     {
-      title: 'Desarrollo Web',
+      title: ' Bootcamp Desarrollo Web',
       institution: 'Adalab Escuela de Formacion Digital',
       period: '03/2024',
     },
@@ -45,33 +45,31 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-background overflow-hidden border-t border-borderC/50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="experience" className="overflow-hidden border-t border-borderC/50 bg-background py-24">
+      <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-primary tracking-tight font-display mb-4">
-            Trayectoria
-          </h2>
-          <p className="text-secondary max-w-2xl mx-auto text-lg">
+          <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Trayectoria</h2>
+          <p className="mx-auto max-w-2xl text-lg text-secondary">
             Mi recorrido profesional y academico me ha llevado del ambito sanitario al desarrollo web, el diseno UX/UI y la integracion de IA en producto.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16 md:gap-12">
+        <div className="grid gap-16 md:grid-cols-2 md:gap-12">
           <div>
-            <div className="flex items-center gap-3 mb-10">
-              <div className="p-3 bg-[rgb(var(--color-surface))] border border-borderC rounded-xl text-accent2">
-                <Briefcase className="w-6 h-6" />
+            <div className="mb-10 flex items-center gap-3">
+              <div className="rounded-xl border border-borderC bg-[rgb(var(--color-surface))] p-3 text-accent2">
+                <Briefcase className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-bold text-primary tracking-tight">Experiencia Laboral</h3>
+              <h3 className="text-2xl font-bold tracking-tight text-primary">Experiencia Laboral</h3>
             </div>
 
             <div className="relative pl-8 md:pl-0">
-              <div className="absolute left-[15px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-accent2/80 via-secondary/30 to-transparent" />
+              <div className="absolute bottom-4 left-[15px] top-4 w-0.5 bg-gradient-to-b from-accent/80 via-accent2/35 to-transparent" />
 
               <div className="space-y-12">
                 {experiences.map((exp, index) => (
@@ -83,15 +81,15 @@ export function Experience() {
                     transition={{ delay: index * 0.1 }}
                     className="relative md:pl-12"
                   >
-                    <div className="absolute left-[-37px] md:left-[-6px] top-1.5 w-4 h-4 rounded-full bg-accent2 border-4 border-background shadow-[0_0_10px_rgba(207,169,172,0.45)] z-10" />
+                    <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="bg-[rgb(var(--color-surface))]/40 border border-borderC p-6 rounded-2xl hover:border-secondary/60 transition-colors duration-300 group">
-                      <div className="flex flex-col mb-4">
-                        <span className="text-accent2 font-bold text-sm tracking-wider uppercase mb-2">{exp.period}</span>
-                        <h4 className="text-xl font-extrabold text-primary mb-1 group-hover:text-accent2 transition-colors">{exp.title}</h4>
-                        <span className="text-secondary font-medium">{exp.company}</span>
+                    <div className="rounded-2xl border border-borderC p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
+                      <div className="mb-4 flex flex-col">
+                        <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{exp.period}</span>
+                        <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{exp.title}</h4>
+                        <span className="font-medium text-secondary">{exp.company}</span>
                       </div>
-                      <p className="text-primary/75 leading-relaxed text-sm md:text-base">{exp.description}</p>
+                      <p className="text-sm leading-relaxed text-primary/75 md:text-base">{exp.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -100,15 +98,15 @@ export function Experience() {
           </div>
 
           <div className="mt-8 md:mt-0">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="p-3 bg-[rgb(var(--color-surface))] border border-borderC rounded-xl text-accent2">
-                <GraduationCap className="w-6 h-6" />
+            <div className="mb-10 flex items-center gap-3">
+              <div className="rounded-xl border border-borderC bg-[rgb(var(--color-surface))] p-3 text-accent2">
+                <GraduationCap className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-bold text-primary tracking-tight">Educacion</h3>
+              <h3 className="text-2xl font-bold tracking-tight text-primary">Educacion</h3>
             </div>
 
             <div className="relative pl-8 md:pl-0">
-              <div className="absolute left-[15px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-accent2/80 via-secondary/30 to-transparent" />
+              <div className="absolute bottom-4 left-[15px] top-4 w-0.5 bg-gradient-to-b from-accent/80 via-accent2/35 to-transparent" />
 
               <div className="space-y-12">
                 {education.map((edu, index) => (
@@ -120,13 +118,13 @@ export function Experience() {
                     transition={{ delay: index * 0.1 }}
                     className="relative md:pl-12"
                   >
-                    <div className="absolute left-[-37px] md:left-[-6px] top-1.5 w-4 h-4 rounded-full bg-accent2 border-4 border-background shadow-[0_0_10px_rgba(207,169,172,0.45)] z-10" />
+                    <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="bg-[rgb(var(--color-surface))]/40 border border-borderC p-6 rounded-2xl hover:border-secondary/60 transition-colors duration-300 group">
+                    <div className="rounded-2xl border border-borderC p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
                       <div className="flex flex-col">
-                        <span className="text-accent2 font-bold text-sm tracking-wider uppercase mb-2">{edu.period}</span>
-                        <h4 className="text-xl font-extrabold text-primary mb-1 group-hover:text-accent2 transition-colors">{edu.title}</h4>
-                        <span className="text-secondary font-medium">{edu.institution}</span>
+                        <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{edu.period}</span>
+                        <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{edu.title}</h4>
+                        <span className="font-medium text-secondary">{edu.institution}</span>
                       </div>
                     </div>
                   </motion.div>

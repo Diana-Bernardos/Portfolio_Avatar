@@ -1,71 +1,70 @@
 import { motion } from 'framer-motion';
 import { ProfessionalExperience } from '../components/ProfessionalExperience';
 import { Certifications } from '../components/Certifications';
-import avatar from '../assets/images/avatar-about.png';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-6 mb-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="bg-background py-24">
+      <div className="mx-auto mb-24 grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="hidden md:flex justify-center items-center w-full relative h-[500px]"
+          className="relative hidden h-[500px] w-full items-center justify-center md:flex"
         >
-          <div className="absolute w-[300px] h-[300px] bg-secondary/20 rounded-full blur-[90px] pointer-events-none" />
+          <div className="pointer-events-none absolute h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[90px]" />
 
-          <motion.img
-            src={avatar}
-            alt="Diana Avatar 3D"
-            className="relative z-10 w-[400px] h-auto object-contain drop-shadow-2xl"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 1 }}
-          />
+          <div className="relative z-10 overflow-hidden rounded-[2.1rem] border border-accent/15 bg-[rgb(var(--color-surface))] shadow-[0_26px_70px_rgba(0,0,0,0.28),0_0_0_1px_rgba(0,209,255,0.08)]">
+            <motion.img
+              src="https://images.pexels.com/photos/22046267/pexels-photo-22046267.jpeg?cs=srgb&dl=pexels-silverkblack-22046267.jpg&fm=jpg"
+              alt="Woman working on laptop in a modern office"
+              className="h-[520px] w-[430px] object-cover object-[center_18%] scale-[1.03]"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 0.8 }}
+            />
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-[rgb(var(--color-surface))] p-8 md:p-10 rounded-[2rem] border border-borderC shadow-xl relative z-10 w-full md:-ml-12 lg:-ml-20"
+          className="surface-gradient relative z-10 w-full rounded-[2rem] border border-borderC p-8 shadow-xl md:-ml-12 md:p-10 lg:-ml-20"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-primary tracking-tight mb-6 font-display">
-            Sobre mi
-          </h2>
-          <p className="text-primary/80 text-lg leading-relaxed mb-6 font-medium">
+          <h2 className="mb-6 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Sobre mi</h2>
+          <p className="mb-6 text-lg font-medium leading-relaxed text-primary/80">
             Mi trayectoria profesional comenzo en el ambito sanitario, donde desarrolle habilidades clave como la organizacion, la precision y la gestion de procesos complejos.
-            <br /><br />
-            Hoy aplico esa base al mundo digital, disenando y desarrollando productos web centrados en el usuario.
-            <br /><br />
+            <br />
+            <br />
+            Hoy aplico esa base al mundo digital, diseñando y desarrollando productos web centrados en el usuario.
+            <br />
+            <br />
             Trabajo combinando UX/UI, desarrollo frontend y soluciones con inteligencia artificial, incluyendo automatizacion de procesos, chatbots y aplicaciones inteligentes.
-            <br /><br />
+            <br />
+            <br />
             Me interesa especialmente crear herramientas utiles que mejoren la experiencia de las personas y optimicen el trabajo de los equipos.
           </p>
 
-          <ul className="space-y-4 mb-8">
+          <ul className="mb-8 space-y-4">
             <li className="flex items-start">
-              <span className="text-accent2 mr-3 mt-1">*</span>
+              <span className="mr-3 mt-1 text-accent2">*</span>
               <p className="text-primary/80">
                 <strong className="text-primary">Desarrollo Frontend:</strong> Desarrollo de aplicaciones web completas, desde la investigacion inicial hasta el despliegue final.
               </p>
             </li>
             <li className="flex items-start">
-              <span className="text-accent2 mr-3 mt-1">*</span>
+              <span className="mr-3 mt-1 text-accent2">*</span>
               <p className="text-primary/80">
                 <strong className="text-primary">Diseno UX/UI:</strong> Creacion de productos digitales centrados en el usuario, combinando diseno UX/UI con desarrollo frontend moderno.
               </p>
             </li>
             <li className="flex items-start">
-              <span className="text-accent2 mr-3 mt-1">*</span>
+              <span className="mr-3 mt-1 text-accent2">*</span>
               <p className="text-primary/80">
                 <strong className="text-primary">IA y Backend:</strong> Integracion de modelos de lenguaje y desarrollo de APIs eficientes con Node.js.
               </p>
             </li>
           </ul>
 
-          <a
-            href="#contact"
-            className="inline-block px-8 py-3.5 bg-accent text-white rounded-xl font-bold hover:bg-secondary transition-all shadow-md"
-          >
+          <a href="#contact" className="inline-block rounded-xl px-8 py-3.5 font-bold transition-all shadow-md hover:-translate-y-1 neural-button">
             Contactar
           </a>
         </motion.div>
@@ -74,11 +73,11 @@ export default function About() {
       <ProfessionalExperience />
       <Certifications />
 
-      <div className="py-20 px-6 md:px-12 text-center bg-background">
-        <h2 className="text-2xl font-bold text-primary mb-6 font-display">Listo para colaborar?</h2>
+      <div className="bg-background px-6 py-20 text-center md:px-12">
+        <h2 className="mb-6 font-display text-2xl font-bold text-primary">Lista para colaborar?</h2>
         <a
           href="mailto:dianabernardosm@gmail.com"
-          className="inline-flex items-center px-8 py-3.5 bg-accent text-white rounded-lg font-bold hover:bg-secondary transition-all"
+          className="inline-flex items-center rounded-lg px-8 py-3.5 font-bold transition-all hover:-translate-y-1 neural-button"
         >
           Enviame un mensaje
         </a>
