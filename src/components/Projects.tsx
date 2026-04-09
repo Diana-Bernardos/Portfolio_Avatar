@@ -273,18 +273,18 @@ export function Projects() {
                 </div>
               </button>
 
-              <div className="flex flex-col gap-5 p-5 md:p-6 lg:p-7">
-                <div>
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent">Estudio de caso</span>
-                  </div>
+                <div className="flex flex-col gap-4 p-4 sm:p-5 md:p-5 lg:p-6">
+                  <div>
+                    <div className="mb-3 flex items-center gap-3">
+                      <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent">Estudio de caso</span>
+                    </div>
 
-                  <h3 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tighter text-primary md:text-[2.6rem]">{project.title}</h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-primary/78 md:text-[15px]">
-                    {compactText(project.longDescription || project.description, 112)}
-                  </p>
-                </div>
+                    <h3 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tighter text-primary md:text-[2.6rem]">{project.title}</h3>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-primary/78 md:text-[15px]">
+                      {compactText(project.longDescription || project.description, 96)}
+                    </p>
+                  </div>
 
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
@@ -293,12 +293,12 @@ export function Projects() {
                   </div>
                   <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                     <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Impacto</p>
-                    <p className="text-sm font-semibold leading-snug text-primary">{compactText(project.impact || project.description, 68)}</p>
+                    <p className="text-sm font-semibold leading-snug text-primary">{compactText(project.impact || project.description, 60)}</p>
                   </div>
                 </div>
 
                 {project.metrics && (
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="hidden grid-cols-2 gap-3 sm:grid">
                     {project.metrics.map((metric) => (
                       <div key={metric.label} className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/65">{metric.label}</p>
@@ -410,7 +410,7 @@ export function Projects() {
               </button>
 
               <div className="grid gap-0 md:grid-cols-2">
-              <div className="relative min-h-[20rem] border-b border-[#161B22] md:min-h-[36rem] md:border-b-0 md:border-r md:border-[#161B22]">
+                <div className="relative min-h-[16rem] border-b border-[#161B22] sm:min-h-[18rem] md:min-h-[36rem] md:border-b-0 md:border-r md:border-[#161B22]">
                   <img src={selectedProject.image} alt={selectedProject.title} className="absolute inset-0 h-full w-full object-cover object-center" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/12 to-accent2/10" />
                   <div className="absolute left-5 top-5 rounded-full border border-accent/20 bg-black/35 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary backdrop-blur-md">
@@ -419,7 +419,7 @@ export function Projects() {
                 </div>
 
                 <div className="flex flex-col gap-3 p-4 md:p-4 lg:p-5">
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="mb-3 flex items-center gap-3">
                         <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
@@ -431,7 +431,7 @@ export function Projects() {
                       </p>
                     </div>
 
-                    <div className="flex shrink-0 flex-wrap justify-end gap-2 pt-1">
+                    <div className="flex shrink-0 flex-wrap gap-2 sm:justify-end">
                       {selectedProject.liveUrl && selectedProject.liveUrl !== '#' && (
                         <a
                           href={selectedProject.liveUrl}
@@ -474,14 +474,14 @@ export function Projects() {
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Problema</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Necesidad real detectada en el producto.', 60)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Necesidad real detectada en el producto.', 54)}</p>
                     </div>
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Solucion</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 60)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 54)}</p>
                     </div>
                   </div>
 
