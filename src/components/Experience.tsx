@@ -45,7 +45,7 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="overflow-hidden border-t border-borderC/50 bg-background py-24">
+    <section id="experience" className="scroll-mt-28 overflow-hidden border-t border-[#161B22] bg-background py-24">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export function Experience() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Trayectoria</h2>
-          <p className="mx-auto max-w-2xl text-lg text-secondary">
+          <p className="mx-auto max-w-2xl text-lg text-primary/78">
             Mi recorrido profesional y academico me ha llevado del ambito sanitario al desarrollo web, el diseno UX/UI y la integracion de IA en producto.
           </p>
         </motion.div>
@@ -62,7 +62,7 @@ export function Experience() {
         <div className="grid gap-16 md:grid-cols-2 md:gap-12">
           <div>
             <div className="mb-10 flex items-center gap-3">
-              <div className="rounded-xl border border-borderC bg-[rgb(var(--color-surface))] p-3 text-accent2">
+              <div className="rounded-xl border border-[#161B22] bg-[rgb(var(--color-surface))] p-3 text-accent2">
                 <Briefcase className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-bold tracking-tight text-primary">Experiencia Laboral</h3>
@@ -83,13 +83,13 @@ export function Experience() {
                   >
                     <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="rounded-2xl border border-borderC p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
+                    <div className="rounded-2xl border border-[#161B22] p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
                       <div className="mb-4 flex flex-col">
                         <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{exp.period}</span>
                         <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{exp.title}</h4>
-                        <span className="font-medium text-secondary">{exp.company}</span>
+                        <span className="font-medium text-primary/70">{exp.company}</span>
                       </div>
-                      <p className="text-sm leading-relaxed text-primary/75 md:text-base">{exp.description}</p>
+                      <p className="text-sm leading-relaxed text-primary/78 md:text-base">{exp.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -99,7 +99,7 @@ export function Experience() {
 
           <div className="mt-8 md:mt-0">
             <div className="mb-10 flex items-center gap-3">
-              <div className="rounded-xl border border-borderC bg-[rgb(var(--color-surface))] p-3 text-accent2">
+              <div className="rounded-xl border border-[#161B22] bg-[rgb(var(--color-surface))] p-3 text-accent2">
                 <GraduationCap className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-bold tracking-tight text-primary">Educacion</h3>
@@ -120,11 +120,11 @@ export function Experience() {
                   >
                     <div className="absolute left-[-37px] top-1.5 z-10 h-4 w-4 rounded-full border-4 border-background bg-accent shadow-[0_0_14px_rgba(0,209,255,0.35)] md:left-[-6px]" />
 
-                    <div className="rounded-2xl border border-borderC p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
+                    <div className="rounded-2xl border border-[#161B22] p-6 transition-colors duration-300 group hover:border-accent/60 surface-gradient">
                       <div className="flex flex-col">
                         <span className="mb-2 font-mono text-sm font-bold uppercase tracking-wider text-accent">{edu.period}</span>
                         <h4 className="mb-1 text-xl font-extrabold text-primary transition-colors group-hover:text-accent">{edu.title}</h4>
-                        <span className="font-medium text-secondary">{edu.institution}</span>
+                        <span className="font-medium text-primary/70">{edu.institution}</span>
                       </div>
                     </div>
                   </motion.div>

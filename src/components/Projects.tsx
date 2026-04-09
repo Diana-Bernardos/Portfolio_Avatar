@@ -33,30 +33,39 @@ interface Project {
   hoverPosition?: string;
 }
 
+const aiTechKeywords = ['ollama', 'openai', 'hugging', 'fastapi', 'python', 'llama', 'ai', 'ml', 'machine'];
+const webTechKeywords = ['react', 'vite', 'javascript', 'typescript', 'css', 'tailwind', 'node', 'axios', 'html', 'scss'];
+
+function getTechnologyTone(tech: string) {
+  const normalized = tech.toLowerCase();
+
+  if (aiTechKeywords.some((keyword) => normalized.includes(keyword))) {
+    return 'ai';
+  }
+
+  if (webTechKeywords.some((keyword) => normalized.includes(keyword))) {
+    return 'web';
+  }
+
+  return 'neutral';
+}
+
+function getTechnologyBadgeClass(tech: string) {
+  switch (getTechnologyTone(tech)) {
+    case 'ai':
+      return 'border-accent2/25 bg-[linear-gradient(135deg,rgba(112,0,255,0.18)_0%,rgba(112,0,255,0.08)_100%)] text-[#D8B4FF] shadow-[0_0_18px_rgba(112,0,255,0.08)]';
+    case 'web':
+      return 'border-accent/25 bg-[linear-gradient(135deg,rgba(0,209,255,0.16)_0%,rgba(0,209,255,0.06)_100%)] text-[#7DDCFF] shadow-[0_0_18px_rgba(0,209,255,0.08)]';
+    default:
+      return 'border-borderC/70 bg-[rgba(22,27,34,0.92)] text-primary/90 shadow-[0_0_18px_rgba(0,0,0,0.08)]';
+  }
+}
+
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   const projects: Project[] = [
-    {
-      title: 'Family Planner',
-      description: 'Calendario de planificacion familiar con asistente inteligente para coordinar tareas y eventos.',
-      longDescription:
-        'Producto completo con gestion de agendas, recordatorios y un asistente IA que sugiere actividades y optimiza tiempos. Enfoque fuerte en UX y accesibilidad.',
-      image: family,
-      technologies: ['React', 'Node.js', 'Axios', 'JavaScript', 'CSS', 'Ollama'],
-      liveUrl: 'https://familyca.netlify.app/',
-      githubUrl: 'https://www.canva.com/design/DAGgfKaN_gE/r6LhVstvPKNO9xYvlLNX1w/view',
-      featured: true,
-      role: 'UX/UI + Frontend',
-      problem: 'Coordinacion familiar dispersa y sin visibilidad compartida.',
-      solution: 'Calendario + tareas + asistente IA con recomendaciones.',
-      impact: 'Mejor claridad y menos friccion en la planificacion diaria.',
-      metrics: [
-        { label: 'Planning clarity', value: '+74%' },
-        { label: 'AI prompts', value: 'Smart' },
-      ],
-    },
     {
       title: 'FinNest.2',
       description: 'App de finanzas personales con IA local integrada.',
@@ -79,25 +88,6 @@ export function Projects() {
       hoverPosition: 'right',
     },
     {
-      title: 'Recetario Sin Gluten',
-      description: 'Recetario personalizado con IA para crear menus y compras sin gluten.',
-      longDescription:
-        'Busqueda inteligente de recetas, personalizacion por dieta y generacion automatica de menus. Integracion con APIs y base de datos para guardado de favoritos.',
-      image: recetario,
-      technologies: ['React', 'Spoonacular Recipes API', 'Ollama', 'Tailwind CSS', 'Supabase'],
-      liveUrl: 'https://mis-recetas-gluten-free.vercel.app/',
-      githubUrl: 'https://github.com/Diana-Bernardos/mis-recetas-gluten-free.git',
-      featured: true,
-      role: 'Product + Frontend',
-      problem: 'Busqueda manual de recetas sin filtrado fiable.',
-      solution: 'IA para sugerencias y menus adaptados a dieta.',
-      impact: 'Ahorro de tiempo y mayor adherencia a dieta.',
-      metrics: [
-        { label: 'Menu time', value: '-63%' },
-        { label: 'Diet fit', value: 'High' },
-      ],
-    },
-    {
       title: 'SmartHome AI',
       description: 'Asistente domotico con IA para controlar dispositivos y automatizar rutinas.',
       longDescription:
@@ -114,6 +104,44 @@ export function Projects() {
       metrics: [
         { label: 'Automations', value: '12+' },
         { label: 'Latency', value: '<1s' },
+      ],
+    },
+    {
+      title: 'Family Planner',
+      description: 'Calendario de planificacion familiar con asistente inteligente para coordinar tareas y eventos.',
+      longDescription:
+        'Producto completo con gestion de agendas, recordatorios y un asistente IA que sugiere actividades y optimiza tiempos. Enfoque fuerte en UX y accesibilidad.',
+      image: family,
+      technologies: ['React', 'Node.js', 'Axios', 'JavaScript', 'CSS', 'Ollama'],
+      liveUrl: 'https://familyca.netlify.app/',
+      githubUrl: 'https://www.canva.com/design/DAGgfKaN_gE/r6LhVstvPKNO9xYvlLNX1w/view',
+      featured: true,
+      role: 'UX/UI + Frontend',
+      problem: 'Coordinacion familiar dispersa y sin visibilidad compartida.',
+      solution: 'Calendario + tareas + asistente IA con recomendaciones.',
+      impact: 'Mejor claridad y menos friccion en la planificacion diaria.',
+      metrics: [
+        { label: 'Planning clarity', value: '+74%' },
+        { label: 'AI prompts', value: 'Smart' },
+      ],
+    },
+    {
+      title: 'Recetario Sin Gluten',
+      description: 'Recetario personalizado con IA para crear menus y compras sin gluten.',
+      longDescription:
+        'Busqueda inteligente de recetas, personalizacion por dieta y generacion automatica de menus. Integracion con APIs y base de datos para guardado de favoritos.',
+      image: recetario,
+      technologies: ['React', 'Spoonacular Recipes API', 'Ollama', 'Tailwind CSS', 'Supabase'],
+      liveUrl: 'https://mis-recetas-gluten-free.vercel.app/',
+      githubUrl: 'https://github.com/Diana-Bernardos/mis-recetas-gluten-free.git',
+      featured: true,
+      role: 'Product + Frontend',
+      problem: 'Busqueda manual de recetas sin filtrado fiable.',
+      solution: 'IA para sugerencias y menus adaptados a dieta.',
+      impact: 'Ahorro de tiempo y mayor adherencia a dieta.',
+      metrics: [
+        { label: 'Menu time', value: '-63%' },
+        { label: 'Diet fit', value: 'High' },
       ],
     },
     {
@@ -198,7 +226,7 @@ export function Projects() {
   const visibleSecondary = showAll ? secondary : secondary.slice(0, 3);
 
   return (
-    <section id="projects" className="bg-background px-6 py-20 md:px-12 md:py-24">
+    <section id="projects" className="scroll-mt-28 bg-background px-6 py-20 md:px-12 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col items-center text-center md:mb-24">
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -206,7 +234,7 @@ export function Projects() {
               Selected Work
             </span>
             <h2 className="mt-6 mb-4 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">My works</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-secondary md:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-primary/80 md:text-lg">
               Seleccion de productos donde combino frontend, UX e IA con un enfoque claro en utilidad, narrativa visual y experiencia real.
             </p>
           </motion.div>
@@ -230,23 +258,23 @@ export function Projects() {
 
                 <h3 className="mb-8 font-display text-4xl font-extrabold leading-[1.02] tracking-tighter text-primary md:text-6xl">{project.title}</h3>
 
-                <p className="mb-10 max-w-lg text-lg font-medium leading-relaxed text-secondary md:text-xl">
+                <p className="mb-10 max-w-lg text-lg font-medium leading-relaxed text-primary/80 md:text-xl">
                   {project.longDescription || project.description}
                 </p>
 
                 {project.role && (
-                  <div className="mb-10 w-full rounded-[1.75rem] border border-borderC/80 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.18)] surface-gradient backdrop-blur-sm">
-                    <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-secondary/90">Rol y responsabilidades</p>
-                    <p className="text-base font-semibold text-primary/95">{project.role}</p>
+                  <div className="mb-10 w-full rounded-[1.75rem] border border-[#161B22] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.18)] surface-gradient backdrop-blur-sm">
+                    <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-primary/70">Rol y responsabilidades</p>
+                    <p className="text-base font-semibold text-primary">{project.role}</p>
                   </div>
                 )}
 
                 {project.metrics && (
                   <div className="mb-10 grid w-full max-w-md grid-cols-2 gap-3">
                     {project.metrics.map((metric) => (
-                      <div key={metric.label} className="rounded-2xl border border-borderC/70 px-4 py-4 surface-gradient">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">{metric.label}</p>
-                        <p className="mt-2 text-xl font-extrabold text-success">{metric.value}</p>
+                      <div key={metric.label} className="rounded-2xl border border-[#161B22] px-4 py-4 surface-gradient">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/65">{metric.label}</p>
+                        <p className="mt-2 text-xl font-extrabold text-primary">{metric.value}</p>
                       </div>
                     ))}
                   </div>
@@ -267,7 +295,7 @@ export function Projects() {
               <div className="group relative w-full cursor-pointer lg:w-7/12" onClick={() => setSelectedProject(project)}>
                 <div className="absolute -inset-5 rounded-[2.8rem] bg-[radial-gradient(circle_at_center,rgba(0,209,255,0.18),rgba(112,0,255,0.12),transparent_62%)] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
 
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[2.2rem] border border-borderC/70 bg-[rgb(var(--color-surface))] shadow-[0_30px_80px_rgba(0,0,0,0.34)] transition-shadow duration-500 group-hover:shadow-[0_0_0_1px_rgba(0,209,255,0.18),0_30px_80px_rgba(0,0,0,0.4)]">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2.2rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_30px_80px_rgba(0,0,0,0.34)] transition-shadow duration-500 group-hover:shadow-[0_0_0_1px_rgba(0,209,255,0.18),0_30px_80px_rgba(0,0,0,0.4)]">
                   <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr from-black/50 via-transparent to-accent2/14" />
                   <motion.img
                     src={project.image}
@@ -306,7 +334,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`group flex cursor-pointer flex-col overflow-hidden rounded-[2.2rem] border border-borderC/60 shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-500 hover:-translate-y-3 hover:border-accent/80 hover:shadow-[0_0_0_1px_rgba(0,209,255,0.14),0_26px_66px_rgba(0,0,0,0.34)] surface-gradient ${
+              className={`group flex cursor-pointer flex-col overflow-hidden rounded-[2.2rem] border border-[#161B22] shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-500 hover:-translate-y-3 hover:border-accent/80 hover:shadow-[0_0_0_1px_rgba(0,209,255,0.14),0_26px_66px_rgba(0,0,0,0.34)] surface-gradient ${
                 index === 1 ? 'lg:translate-y-8' : ''
               }`}
               onClick={() => setSelectedProject(project)}
@@ -317,7 +345,7 @@ export function Projects() {
               </div>
               <div className="flex flex-grow flex-col p-8 md:p-10">
                 <h4 className="mb-4 text-2xl font-bold tracking-tight text-primary transition-colors group-hover:text-accent">{project.title}</h4>
-                <p className="mb-10 flex-grow text-base font-medium leading-relaxed text-secondary">{project.description}</p>
+                <p className="mb-10 flex-grow text-base font-medium leading-relaxed text-primary/78">{project.description}</p>
                 <div className="mt-auto w-full">
                   <div className="flex items-center gap-2 font-mono text-sm font-bold uppercase tracking-widest text-accent transition-all group-hover:gap-4">
                     Explorar <ExternalLink className="h-4 w-4" />
@@ -353,7 +381,7 @@ export function Projects() {
               initial={{ scale: 0.96, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.96, opacity: 0, y: 10 }}
-              className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-y-auto rounded-3xl border border-borderC/70 shadow-[0_0_50px_rgba(0,0,0,0.5)] surface-gradient backdrop-blur-2xl"
+              className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-y-auto rounded-3xl border border-[#161B22] shadow-[0_0_50px_rgba(0,0,0,0.5)] surface-gradient backdrop-blur-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -373,10 +401,7 @@ export function Projects() {
 
                 <div className="mb-8 flex flex-wrap gap-2">
                   {selectedProject.technologies.map((tech: string, i: number) => (
-                    <span
-                      key={i}
-                      className="rounded-lg border border-accent/20 bg-[linear-gradient(135deg,rgba(0,209,255,0.08)_0%,rgba(112,0,255,0.12)_100%)] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-success shadow-[0_0_18px_rgba(0,245,160,0.08)]"
-                    >
+                    <span key={i} className={`rounded-lg border px-3 py-1.5 text-xs font-bold uppercase tracking-wider ${getTechnologyBadgeClass(tech)}`}>
                       {tech}
                     </span>
                   ))}
@@ -388,21 +413,21 @@ export function Projects() {
                   {selectedProject.problem && (
                     <div className="mb-6">
                       <h4 className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">El Problema</h4>
-                      <p className="text-secondary">{selectedProject.problem}</p>
+                      <p className="text-primary/78">{selectedProject.problem}</p>
                     </div>
                   )}
 
                   {selectedProject.solution && (
                     <div className="mb-6">
                       <h4 className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">La Solucion</h4>
-                      <p className="text-secondary">{selectedProject.solution}</p>
+                      <p className="text-primary/78">{selectedProject.solution}</p>
                     </div>
                   )}
 
                   {selectedProject.impact && (
                     <div className="mb-6">
                       <h4 className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Impacto Clave</h4>
-                      <p className="text-secondary">{selectedProject.impact}</p>
+                      <p className="text-primary/78">{selectedProject.impact}</p>
                     </div>
                   )}
 

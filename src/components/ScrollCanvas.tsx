@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface ScrollCanvasProps {
   images: string[];
@@ -9,6 +9,7 @@ interface ScrollCanvasProps {
 export function ScrollCanvas({ images, containerRef }: ScrollCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [loadedImages, setLoadedImages] = useState<HTMLImageElement[]>([]);
+  const [isReady, setIsReady] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -30,6 +31,7 @@ export function ScrollCanvas({ images, containerRef }: ScrollCanvasProps) {
         loadedCount++;
         if (loadedCount === images.length) {
           setLoadedImages(loaded);
+          setIsReady(true);
         }
       };
     });
@@ -77,11 +79,27 @@ export function ScrollCanvas({ images, containerRef }: ScrollCanvasProps) {
   }, [loadedImages]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={1000}
-      height={1000}
-      className="w-full h-full object-contain pointer-events-none"
-    />
+    <div className="relative h-full w-full">
+      {!isReady && (
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-0 overflow-hidden rounded-full border border-borderC/60 bg-[rgba(var(--color-surface),0.45)]"
+          initial={{ opacity: 0.55 }}
+          animate={{ opacity: [0.55, 0.88, 0.55] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.05)_30%,rgba(0,209,255,0.14)_50%,rgba(112,0,255,0.14)_63%,transparent_85%)] bg-[length:220%_220%] animate-[pulse_1.8s_ease-in-out_infinite]" />
+          <div className="absolute inset-x-[18%] top-[22%] h-8 rounded-full bg-white/6 blur-2xl" />
+          <div className="absolute inset-x-[24%] bottom-[20%] h-24 rounded-full bg-accent/10 blur-3xl" />
+        </motion.div>
+      )}
+
+      <canvas
+        ref={canvasRef}
+        width={1000}
+        height={1000}
+        className="pointer-events-none h-full w-full object-contain"
+      />
+    </div>
   );
 }

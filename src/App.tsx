@@ -9,11 +9,25 @@ import { ScrollProgress } from './components/ScrollProgress';
 import Home from './pages/Home';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const elementId = hash.replace('#', '');
+    const element = document.getElementById(elementId);
+
+    if (!element) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [pathname, hash]);
 
   return null;
 }

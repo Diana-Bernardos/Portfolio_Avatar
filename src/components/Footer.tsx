@@ -1,26 +1,29 @@
-﻿import { Link } from 'react-router-dom';
-
 export function Footer() {
   return (
-    <footer className="py-16 bg-background border-t border-borderC">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col items-center md:items-start gap-3">
-          <Link to="/" className="text-lg font-bold text-primary tracking-tight">
+    <footer className="border-t border-borderC bg-background py-16">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 md:flex-row">
+        <div className="flex flex-col items-center gap-3 md:items-start">
+          <a href="#home" className="text-lg font-bold tracking-tight text-primary">
             Diana Bernardos
-          </Link>
-          <p className="text-secondary text-sm font-medium opacity-70">
-            © {new Date().getFullYear()} Frontend & UX.
-          </p>
+          </a>
+          <p className="text-sm font-medium text-secondary/70">(c) {new Date().getFullYear()} Frontend & UX.</p>
         </div>
 
-        <div className="flex gap-8 text-secondary text-xs font-bold uppercase tracking-widest">
-          <Link to="/" className="hover:text-primary transition-colors">Inicio</Link>
-          <Link to="/#projects" className="hover:text-primary transition-colors">Proyectos</Link>
-          <Link to="/sobre-mi" className="hover:text-primary transition-colors">Sobre mi</Link>
-          <a href="mailto:dianabernardosm@gmail.com" className="hover:text-primary transition-colors">Contacto</a>
+        <div className="flex flex-wrap justify-center gap-8 text-xs font-bold uppercase tracking-widest text-secondary">
+          <a href="#home" className="transition-colors hover:text-primary">
+            Inicio
+          </a>
+          <a href="#about" className="transition-colors hover:text-primary">
+            Sobre mi
+          </a>
+          <a href="#projects" className="transition-colors hover:text-primary">
+            Proyectos
+          </a>
+          <a href="#contact" className="transition-colors hover:text-primary">
+            Contacto
+          </a>
         </div>
       </div>
     </footer>
   );
 }
-

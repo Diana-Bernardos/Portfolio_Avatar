@@ -27,7 +27,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="overflow-hidden border-y border-borderC/60 bg-[linear-gradient(180deg,rgba(10,15,20,1)_0%,rgba(12,18,27,1)_100%)] py-24"
+      className="scroll-mt-28 overflow-hidden border-y border-[#161B22] bg-[linear-gradient(180deg,rgba(10,15,20,1)_0%,rgba(12,18,27,1)_100%)] py-24"
     >
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
@@ -40,7 +40,7 @@ export function Process() {
             Work Process
           </span>
           <h2 className="mt-6 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Proceso de Trabajo</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-secondary md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-primary/78 md:text-lg">
             Trabajo con una estructura clara, colaborativa y enfocada en convertir ideas en productos utiles, cuidados y listos para crecer.
           </p>
         </motion.div>
@@ -68,9 +68,9 @@ export function Process() {
                       <div className="flex h-full w-full items-center justify-center text-base font-black">{step.number}</div>
                     </div>
 
-                    <div className="ml-14 rounded-[1.75rem] border border-borderC p-6 backdrop-blur-sm transition-colors duration-300 hover:border-accent/60 md:ml-0 md:p-8 surface-gradient">
+                    <div className="ml-14 rounded-[1.75rem] border border-[#161B22] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-accent/60 md:ml-0 md:p-8 surface-gradient">
                       <h3 className="text-xl font-extrabold tracking-tight text-primary md:text-2xl">{step.title}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-primary/75 md:text-base">{step.description}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-primary/78 md:text-base">{step.description}</p>
                     </div>
                   </div>
                 </motion.div>
