@@ -29,7 +29,6 @@ interface Project {
   solution?: string;
   impact?: string;
   metrics?: Array<{ label: string; value: string }>;
-  secondaryImage?: string;
 }
 
 const aiTechKeywords = ['ollama', 'openai', 'hugging', 'fastapi', 'python', 'llama', 'ai', 'ml', 'machine'];
@@ -83,7 +82,6 @@ export function Projects() {
         { label: 'Privacy', value: '100%' },
         { label: 'Modules', value: '04' },
       ],
-      secondaryImage: finnest2,
     },
     {
       title: 'SmartHome AI',
@@ -164,8 +162,6 @@ export function Projects() {
     {
       title: 'Project Sphere',
       description: 'Guarda y comparte tus mejores proyectos.',
-      longDescription:
-        'Plataforma colaborativa para desarrolladores donde pueden exhibir sus proyectos, recibir feedback y encontrar colaboradores.',
       image: libro,
       technologies: ['React', 'MySQL', 'CSS', 'JavaScript'],
       liveUrl: 'https://diana-bernardos.github.io/project-promo-X-module-3-team-2/',
@@ -244,78 +240,105 @@ export function Projects() {
           </motion.div>
         </div>
 
-        <div className="mb-32 space-y-32 md:space-y-48">
+        <div className="mb-28 space-y-24 md:space-y-32">
           {featured.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className={`flex flex-col items-center gap-12 md:gap-20 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
+              className={`grid gap-0 overflow-hidden rounded-[2.4rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_24px_70px_rgba(0,0,0,0.22)] ${
+                index % 2 === 0 ? 'lg:grid-cols-[1.02fr_0.98fr]' : 'lg:grid-cols-[0.98fr_1.02fr]'
+              }`}
             >
-              <div className="flex w-full flex-col items-start justify-center text-left lg:w-5/12">
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="h-[1px] w-10 bg-gradient-to-r from-accent to-accent2" />
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent md:text-xs">Estudio de caso</span>
+              <button
+                type="button"
+                onClick={() => setSelectedProject(project)}
+                className="group relative min-h-[16rem] overflow-hidden border-b border-[#161B22] lg:min-h-[22rem] lg:border-b-0 lg:border-r lg:border-[#161B22]"
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover object-center transition-none"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/12 to-accent2/10" />
+                <div className="absolute left-5 top-5 rounded-full border border-accent/20 bg-black/35 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary backdrop-blur-md">
+                  Case overview
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-5 text-left">
+                  <div className="inline-flex rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-white/80 backdrop-blur-md">
+                    Click para abrir
+                  </div>
+                </div>
+              </button>
+
+              <div className="flex flex-col gap-5 p-5 md:p-6 lg:p-7">
+                <div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent">Estudio de caso</span>
+                  </div>
+
+                  <h3 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tighter text-primary md:text-[2.6rem]">{project.title}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-primary/78 md:text-[15px]">
+                    {compactText(project.longDescription || project.description, 112)}
+                  </p>
                 </div>
 
-                <h3 className="mb-6 font-display text-4xl font-extrabold leading-[1.02] tracking-tighter text-primary md:text-6xl">{project.title}</h3>
-
-                <p className="mb-8 max-w-lg text-lg font-medium leading-relaxed text-primary/80 md:text-xl">
-                  {project.longDescription || project.description}
-                </p>
-
-                {project.role && (
-                  <div className="mb-8 w-full rounded-[1.75rem] border border-[#161B22] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.18)] surface-gradient backdrop-blur-sm">
-                    <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-primary/70">Rol y responsabilidades</p>
-                    <p className="text-base font-semibold text-primary">{project.role}</p>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Rol</p>
+                    <p className="text-sm font-semibold leading-snug text-primary">{project.role || 'Project design + development'}</p>
                   </div>
-                )}
+                  <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Impacto</p>
+                    <p className="text-sm font-semibold leading-snug text-primary">{compactText(project.impact || project.description, 68)}</p>
+                  </div>
+                </div>
 
                 {project.metrics && (
-                  <div className="mb-8 grid w-full max-w-md grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-3">
                     {project.metrics.map((metric) => (
-                      <div key={metric.label} className="rounded-2xl border border-[#161B22] px-4 py-4 surface-gradient">
+                      <div key={metric.label} className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/65">{metric.label}</p>
-                        <p className="mt-2 text-xl font-extrabold text-primary">{metric.value}</p>
+                        <p className="mt-2 text-lg font-extrabold text-primary">{metric.value}</p>
                       </div>
                     ))}
                   </div>
                 )}
 
-                <div className="flex w-full gap-4 sm:w-auto">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setSelectedProject(project)}
-                    className="w-full rounded-2xl px-10 py-4 text-base font-bold transition-all hover:-translate-y-1 sm:w-auto neural-button"
-                  >
-                    Ver detalles
-                  </motion.button>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <span key={i} className={`rounded-lg border px-3 py-1.5 text-xs font-bold uppercase tracking-wider ${getTechnologyBadgeClass(tech)}`}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {project.liveUrl && project.liveUrl !== '#' && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold transition-colors hover:opacity-95 neural-button"
+                    >
+                      Demo <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  )}
+                  {project.githubUrl && project.githubUrl !== '#' && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl border border-[#161B22] bg-black/50 px-4 py-2.5 text-sm font-bold text-primary transition-colors hover:border-accent"
+                    >
+                      <Github className="mr-2 h-4 w-4" /> GitHub
+                    </a>
+                  )}
                 </div>
               </div>
-
-              <button
-                type="button"
-                className="group relative w-full cursor-pointer lg:w-7/12"
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="absolute -inset-5 rounded-[2.8rem] bg-[radial-gradient(circle_at_center,rgba(0,209,255,0.18),rgba(112,0,255,0.12),transparent_62%)] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
-
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[2.2rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_30px_80px_rgba(0,0,0,0.34)] transition-shadow duration-500 group-hover:shadow-[0_0_0_1px_rgba(0,209,255,0.18),0_30px_80px_rgba(0,0,0,0.4)]">
-                  <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr from-black/50 via-transparent to-accent2/14" />
-                  <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-95" />
-
-                  <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/35 opacity-0 backdrop-blur-[2px] transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="transform rounded-full px-8 py-4 text-sm font-black uppercase tracking-widest shadow-2xl transition-all duration-500 group-hover:translate-y-0 translate-y-8 neural-button">
-                      Explorar proyecto
-                    </div>
-                  </div>
-                </div>
-
-                <div className={`absolute -bottom-6 h-36 w-36 rounded-full bg-accent2/15 blur-3xl -z-10 ${index % 2 === 0 ? '-right-6' : '-left-6'}`} />
-              </button>
             </motion.div>
           ))}
         </div>
@@ -324,29 +347,27 @@ export function Projects() {
           <h3 className="font-display text-2xl font-extrabold tracking-tight text-primary md:text-3xl">Mas proyectos</h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {visibleSecondary.map((project, index) => (
             <motion.button
               key={index}
               type="button"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group flex cursor-pointer flex-col overflow-hidden rounded-[2.2rem] border border-[#161B22] shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-300 hover:border-accent/80 hover:shadow-[0_0_0_1px_rgba(0,209,255,0.14),0_26px_66px_rgba(0,0,0,0.34)] surface-gradient"
+              transition={{ delay: index * 0.08 }}
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-[#161B22] bg-[rgb(var(--color-surface))] text-left shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-colors duration-300 hover:border-accent/80"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="relative aspect-[1.2] overflow-hidden border-b border-borderC/40">
-                <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-70" />
+              <div className="relative aspect-[4/3] overflow-hidden border-b border-[#161B22]">
+                <img src={project.image} alt={project.title} className="h-full w-full object-cover object-center transition-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-transparent opacity-75" />
               </div>
-              <div className="flex flex-grow flex-col p-8 md:p-10">
-                <h4 className="mb-4 text-2xl font-bold tracking-tight text-primary transition-colors group-hover:text-accent">{project.title}</h4>
-                <p className="mb-10 flex-grow text-base font-medium leading-relaxed text-primary/78">{project.description}</p>
-                <div className="mt-auto w-full">
-                  <div className="flex items-center gap-2 font-mono text-sm font-bold uppercase tracking-widest text-accent transition-all group-hover:gap-4">
-                    Explorar <ExternalLink className="h-4 w-4" />
-                  </div>
+              <div className="flex flex-grow flex-col p-6">
+                <h4 className="mb-3 text-xl font-bold tracking-tight text-primary group-hover:text-accent">{project.title}</h4>
+                <p className="mb-5 flex-grow text-sm leading-relaxed text-primary/78">{project.description}</p>
+                <div className="mt-auto flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-accent">
+                  Explorar <ExternalLink className="h-4 w-4" />
                 </div>
               </div>
             </motion.button>
@@ -378,40 +399,39 @@ export function Projects() {
               initial={{ scale: 0.96, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.96, opacity: 0, y: 10 }}
-              className="relative flex max-h-[90vh] w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-[#161B22] shadow-[0_0_50px_rgba(0,0,0,0.5)] surface-gradient backdrop-blur-2xl"
+              className="relative w-full max-w-6xl overflow-hidden rounded-3xl border border-[#161B22] shadow-[0_0_50px_rgba(0,0,0,0.5)] surface-gradient backdrop-blur-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-primary transition-colors hover:bg-accent hover:text-[rgb(var(--color-ink))]"
+                className="absolute right-4 top-4 z-20 rounded-full bg-black/50 p-2 text-primary transition-colors hover:bg-accent hover:text-[rgb(var(--color-ink))]"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="grid flex-1 gap-0 overflow-hidden md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-                <div className="relative min-h-[14rem] border-b border-[#161B22] md:min-h-[22rem] md:border-b-0 md:border-r md:border-[#161B22]">
-                  <img src={selectedProject.image} alt={selectedProject.title} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-accent2/10" />
+              <div className="grid gap-0 md:grid-cols-2">
+                <div className="relative min-h-[18rem] border-b border-[#161B22] md:min-h-[34rem] md:border-b-0 md:border-r md:border-[#161B22]">
+                  <img src={selectedProject.image} alt={selectedProject.title} className="absolute inset-0 h-full w-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/12 to-accent2/10" />
                   <div className="absolute left-5 top-5 rounded-full border border-accent/20 bg-black/35 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary backdrop-blur-md">
                     Case overview
                   </div>
                 </div>
 
-                <div className="flex flex-col overflow-hidden p-4 md:p-5 lg:p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent">Selected Work</span>
-                  </div>
-
-                  <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 p-4 md:p-5 lg:p-6">
+                  <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
+                      <div className="mb-3 flex items-center gap-3">
+                        <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent">Selected Work</span>
+                      </div>
                       <h2 className="font-display text-2xl font-extrabold tracking-tight text-primary md:text-3xl">{selectedProject.title}</h2>
-                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-primary/78 md:text-[15px]">
-                        {compactText(selectedProject.longDescription || selectedProject.description, 110)}
+                      <p className="mt-2 text-sm leading-relaxed text-primary/78">
+                        {compactText(selectedProject.longDescription || selectedProject.description, 100)}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex shrink-0 flex-wrap justify-end gap-2 pt-1">
                       {selectedProject.liveUrl && selectedProject.liveUrl !== '#' && (
                         <a
                           href={selectedProject.liveUrl}
@@ -435,37 +455,37 @@ export function Projects() {
                     </div>
                   </div>
 
-                  <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Rol</p>
                       <p className="text-sm font-semibold leading-snug text-primary">{selectedProject.role || 'Project design + development'}</p>
                     </div>
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Impacto</p>
-                      <p className="text-sm font-semibold leading-snug text-primary">{compactText(selectedProject.impact || selectedProject.description, 72)}</p>
+                      <p className="text-sm font-semibold leading-snug text-primary">{compactText(selectedProject.impact || selectedProject.description, 66)}</p>
                     </div>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech: string, i: number) => (
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((tech, i) => (
                       <span key={i} className={`rounded-lg border px-3 py-1.5 text-xs font-bold uppercase tracking-wider ${getTechnologyBadgeClass(tech)}`}>
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Problema</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Identificacion rapida de una necesidad real.', 70)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.problem || 'Necesidad real detectada en el producto.', 60)}</p>
                     </div>
                     <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Solucion</p>
-                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 70)}</p>
+                      <p className="text-sm leading-snug text-primary/78">{compactText(selectedProject.solution || 'Interfaz clara con foco en ejecucion.', 60)}</p>
                     </div>
                   </div>
 
-                  <div className="mt-5 rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
+                  <div className="rounded-2xl border border-[#161B22] bg-[rgb(var(--color-surface))]/70 p-3.5">
                     <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">Stack rapido</p>
                     <p className="text-sm leading-snug text-primary/78">{selectedProject.technologies.slice(0, 4).join(' · ')}</p>
                   </div>

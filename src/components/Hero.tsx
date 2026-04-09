@@ -1,6 +1,6 @@
 import { FileDown, Github, Linkedin, ChevronDown } from 'lucide-react';
-import { motion, Variants, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion, Variants } from 'framer-motion';
+import { useState } from 'react';
 
 import avatar1 from '../assets/images/avatar-hero.png';
 import avatar2 from '../assets/images/avatar.png';
@@ -9,17 +9,7 @@ import cvPdf from '../assets/docs/CV.pdf';
 import { ScrollCanvas } from './ScrollCanvas';
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [activeReaction, setActiveReaction] = useState<'greeting' | 'frontend' | 'ux' | 'ai' | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const avatarScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
-  const avatarY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -116,8 +106,8 @@ export function Hero() {
   const avatarMotionTransition = activeReaction ? { duration: 0.9, ease: 'easeInOut' } : { duration: 0.7, ease: 'easeInOut' };
 
   return (
-    <header id="home" ref={containerRef} className="relative h-[200vh] overflow-visible bg-background">
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden pt-20">
+    <header id="home" className="relative overflow-hidden bg-background py-20 md:py-24">
+      <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden pt-10 md:pt-20">
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <svg
             className="absolute inset-0 h-full w-full"
@@ -160,7 +150,6 @@ export function Hero() {
         </div>
 
         <motion.div
-          style={{ y: textY, opacity: textOpacity }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -248,7 +237,6 @@ export function Hero() {
             variants={item}
             animate={avatarMotion}
             transition={avatarMotionTransition}
-            style={{ scale: avatarScale, y: avatarY }}
             className="relative hidden h-[360px] w-full items-center justify-center md:flex md:h-[540px] lg:h-[520px]"
           >
             <div className="pointer-events-none absolute h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.16)_0%,rgba(112,0,255,0.16)_48%,transparent_72%)] blur-[90px] lg:h-[280px] lg:w-[280px]" />
@@ -300,21 +288,20 @@ export function Hero() {
             </div>
 
             <div className="relative z-10 flex h-full w-full max-w-md items-center justify-center lg:max-w-sm">
-              <ScrollCanvas images={images} containerRef={containerRef} />
+              <ScrollCanvas images={images} />
             </div>
           </motion.div>
         </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
-            style={{ opacity: textOpacity }}
-          >
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/80">Scroll para explorar</span>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
+        >
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/80">Scroll para explorar</span>
           <ChevronDown className="h-5 w-5 text-accent" />
-          </motion.div>
+        </motion.div>
       </div>
     </header>
   );
