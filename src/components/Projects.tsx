@@ -249,13 +249,13 @@ export function Projects() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.65, ease: 'easeOut' }}
               className={`grid gap-0 overflow-hidden rounded-[2.4rem] border border-[#161B22] bg-[rgb(var(--color-surface))] shadow-[0_24px_70px_rgba(0,0,0,0.22)] ${
-                index % 2 === 0 ? 'lg:grid-cols-[1.02fr_0.98fr]' : 'lg:grid-cols-[0.98fr_1.02fr]'
+                index % 2 === 0 ? 'lg:grid-cols-[1.12fr_0.88fr]' : 'lg:grid-cols-[0.88fr_1.12fr]'
               }`}
             >
               <button
                 type="button"
                 onClick={() => setSelectedProject(project)}
-                className="group relative min-h-[16rem] overflow-hidden border-b border-[#161B22] lg:min-h-[22rem] lg:border-b-0 lg:border-r lg:border-[#161B22]"
+                className="group relative min-h-[18rem] overflow-hidden border-b border-[#161B22] lg:min-h-[26rem] lg:border-b-0 lg:border-r lg:border-[#161B22]"
               >
                 <img
                   src={project.image}
@@ -410,7 +410,7 @@ export function Projects() {
               </button>
 
               <div className="grid gap-0 md:grid-cols-2">
-                <div className="relative min-h-[18rem] border-b border-[#161B22] md:min-h-[34rem] md:border-b-0 md:border-r md:border-[#161B22]">
+              <div className="relative min-h-[20rem] border-b border-[#161B22] md:min-h-[36rem] md:border-b-0 md:border-r md:border-[#161B22]">
                   <img src={selectedProject.image} alt={selectedProject.title} className="absolute inset-0 h-full w-full object-cover object-center" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/12 to-accent2/10" />
                   <div className="absolute left-5 top-5 rounded-full border border-accent/20 bg-black/35 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary backdrop-blur-md">
@@ -418,8 +418,8 @@ export function Projects() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 p-4 md:p-5 lg:p-6">
-                  <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col gap-3 p-4 md:p-4 lg:p-5">
+                  <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
                       <div className="mb-3 flex items-center gap-3">
                         <span className="h-px w-10 bg-gradient-to-r from-accent to-accent2" />
