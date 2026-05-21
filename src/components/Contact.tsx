@@ -40,7 +40,7 @@ export function Contact() {
           </span>
           <h2 className="mt-5 mb-4 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Hablemos</h2>
           <p className="text-base leading-relaxed text-primary/78 md:text-lg">
-            He eliminado el formulario para no dejar una experiencia rota. Si te interesa mi perfil, puedes escribirme por email o revisar mi recorrido en LinkedIn y GitHub.
+              Si te interesa mi perfil, puedes escribirme por email o revisar mi recorrido en LinkedIn y GitHub.
           </p>
         </motion.div>
 

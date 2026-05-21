@@ -21,8 +21,7 @@ export default function About() {
         <div className="surface-gradient relative z-10 w-full rounded-[1.75rem] border border-[#161B22] p-7 shadow-xl md:-ml-10 md:p-8 lg:-ml-16">
           <h2 className="mb-6 font-display text-3xl font-extrabold tracking-tight text-primary md:text-5xl">Sobre mi</h2>
           <p className="mb-6 text-lg font-medium leading-relaxed text-primary/80">
-            Mi trayectoria profesional comenzó en el ámbito sanitario, donde desarrollé habilidades clave como la organización, la precisión y la gestión de procesos complejos.
-            <br />
+              Mi experiencia previa en gestión hospitalaria me aporta una visión de producto orientada a procesos reales, precisión en el trabajo y capacidad probada de adaptación.            <br />
             <br />
             Hoy aplico esa base al mundo digital, diseñando y desarrollando productos web centrados en el usuario.
             <br />
